@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MenuOption {
+class RoutersOption {
   final String route;
   final String name;
   final Widget screen;
   final IconData icon;
 
-  MenuOption(
+  RoutersOption(
       {required this.route,
       required this.name,
       required this.screen,
