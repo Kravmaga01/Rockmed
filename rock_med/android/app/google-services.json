@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "755212408181",
+    "project_id": "databaserockmed-dbefb",
+    "storage_bucket": "databaserockmed-dbefb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755212408181:android:c0fe8d3c893d0dd5732f3c",
+        "android_client_info": {
+          "package_name": "com.example.rock_med"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755212408181-cug1cblgjoejal4kmu2otu2g77bm8qg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Brz9kfxP31cVIJSYFBT0xzKxFmEnuNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755212408181-cug1cblgjoejal4kmu2otu2g77bm8qg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

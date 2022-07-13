@@ -63,6 +63,7 @@ class CreatePerfileBandaScreen extends StatelessWidget {
                   if (!formKey.currentState!.validate()) {
                     return;
                   }
+                  print(formValues);
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(AppTheme.primary),
