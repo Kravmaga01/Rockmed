@@ -39,6 +39,7 @@ class ConstuIpuntField extends StatelessWidget {
         if (value == null) return 'Este campor es requerido';
         return value.isEmpty ? 'los campos son requeridos' : null;
       },
+
       autovalidateMode: AutovalidateMode.onUserInteraction,
 
       decoration: InputDecoration(

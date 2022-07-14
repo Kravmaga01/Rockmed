@@ -1,4 +1,5 @@
-import 'package:rock_med/themes/themes.dart';
+import 'package:provider/provider.dart';
+
 import 'package:flutter/material.dart';
 
 import '../widget/wiget.dart';
@@ -9,25 +10,28 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    final Map<String, String> formValues = {
-      'nombre': 'Nombre del logeo',
-      'contraseña': 'contraseña a confirmar',
-    };
     return Scaffold(
       // lienzo
       body: SingleChildScrollView(
+        // perime que se pueda hacer scroll cuando sale el teclado
         child: Padding(
-          padding: const EdgeInsets.only(top: 100),
+          padding: const EdgeInsets.only(top: 100), // Style: padding del top
           child: Center(
+            // centrmoas el formulario
             child: Form(
+              // clase formulario que nos permite crear formulario
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                // para cer más organizados todo lo ponmos dentro de un una columba
+                mainAxisAlignment: MainAxisAlignment
+                    .center, // aliniación  vertical de la pantalla
+                crossAxisAlignment: CrossAxisAlignment
+                    .center, // alineación horizontal de la pantalla
                 children: [
+                  // el children nos permitira poder ingresar diversos wigets
                   Image.asset(
+                    // imagen que viene en el paquekete de la qplicación
                     //logo principal
-                    'assets/logo.png',
+                    'assets/logo.png', // icono de la aplicación
                     height: 150,
                     width: 200,
                   ),
@@ -36,7 +40,12 @@ class LoginScreen extends StatelessWidget {
                     height: 50,
                   ),
                   //const ConstuIpuntField(),
-                  const _loginForm(),
+                  ChangeNotifierProvider(
+                    // este chech notifica su si los validator esta bien y verifica si puede accerder a los permisos o no
+                    create: (_) =>
+                        LoginFormProvider(), // se intancia la claase login fromProvider
+                    child: const LoginForm(), // le pasamos como hijo el login
+                  ),
                 ],
               ),
             ),
@@ -44,53 +53,5 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class _loginForm extends StatelessWidget {
-  const _loginForm({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        // mantener la referencia con la key
-        child: Form(
-            child: Column(children: [
-      TextFormField(
-          autocorrect: false,
-          keyboardType: TextInputType.name,
-          decoration: InputDecoration(labelText: 'Nombre')),
-      const SizedBox(
-        // espacio en blanco
-        height: 30,
-      ),
-      TextFormField(
-          autocorrect: false,
-          showCursor: true,
-          keyboardType: TextInputType.name,
-          decoration: InputDecoration(labelText: 'Contraseña')),
-      TextButton(
-        child: const Text(
-            // caja de texto
-            'Olvide mis datos',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-                color: AppTheme.second)),
-        onPressed: () => {Navigator.pushNamed(context, 'recoveriPassword')},
-      ),
-      MaterialButton(
-        // ignore: sort_child_properties_last
-        child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-            child: const Text(
-              'login',
-              style: TextStyle(color: AppTheme.second),
-            )),
-        onPressed: () {},
-        color: AppTheme.primary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      )
-    ])));
   }
 }

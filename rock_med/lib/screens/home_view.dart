@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rock_med/providers/db_provider.dart';
 import 'package:rock_med/router/routersApp.dart';
 
 class HomeScreen extends StatelessWidget {
