@@ -1,14 +1,3 @@
-import 'package:flutter/material.dart';
+export 'package:rock_med/models/model_banda.dart';
 
-class RoutersOption {
-  final String route;
-  final String name;
-  final Widget screen;
-  final IconData icon;
-
-  RoutersOption(
-      {required this.route,
-      required this.name,
-      required this.screen,
-      required this.icon});
-}
+export 'package:rock_med/models/routers.dart';

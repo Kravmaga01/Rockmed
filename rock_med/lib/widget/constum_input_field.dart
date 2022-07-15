@@ -41,7 +41,6 @@ class ConstuIpuntField extends StatelessWidget {
       },
 
       autovalidateMode: AutovalidateMode.onUserInteraction,
-
       decoration: InputDecoration(
           hintText: hinTexT,
           labelText: labelText,
