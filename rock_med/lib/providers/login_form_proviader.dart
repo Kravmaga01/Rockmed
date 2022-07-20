@@ -1,4 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:rock_med/providers/bar_service.dart';
+import 'package:rock_med/providers/providers.dart';
 
 class LoginFormProvider extends ChangeNotifier {
   // este sera el controlador de nuesto formulario de login
@@ -22,10 +27,6 @@ class LoginFormProvider extends ChangeNotifier {
   }
 
   bool isValidForm() {
-    // esta función returna un buleano, si es true la validación es correcta de lo contrario activa las validaciones
-    print(formKey.currentState?.validate());
-    print('$password-$nick');
-
     return formKey.currentState?.validate() ?? false;
   }
 }

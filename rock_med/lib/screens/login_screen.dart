@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
+import 'package:rock_med/providers/banda_service.dart';
 
 import '../widget/wiget.dart';
 
@@ -13,15 +15,15 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       // lienzo
       body: SingleChildScrollView(
-        // perime que se pueda hacer scroll cuando sale el teclado
+        // permite que se pueda hacer scroll cuando sale el teclado
         child: Padding(
           padding: const EdgeInsets.only(top: 100), // Style: padding del top
           child: Center(
-            // centrmoas el formulario
+            // centramos el formulario
             child: Form(
               // clase formulario que nos permite crear formulario
               child: Column(
-                // para cer más organizados todo lo ponmos dentro de un una columba
+                // para cer más organizados todo lo ponmos dentro de un una Column
                 mainAxisAlignment: MainAxisAlignment
                     .center, // aliniación  vertical de la pantalla
                 crossAxisAlignment: CrossAxisAlignment
@@ -29,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   // el children nos permitira poder ingresar diversos wigets
                   Image.asset(
-                    // imagen que viene en el paquekete de la qplicación
+                    // imagen que viene en el paquekete de la aplicación
                     //logo principal
                     'assets/logo.png', // icono de la aplicación
                     height: 150,

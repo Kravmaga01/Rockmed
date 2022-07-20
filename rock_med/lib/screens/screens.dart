@@ -1,5 +1,5 @@
 export 'package:rock_med/screens/acept_terminos.dart';
-
+export 'package:rock_med/screens/mainpage.dart';
 export 'package:rock_med/screens/create_profile_usuario_screen.dart';
 export 'package:rock_med/screens/create_profile_bar_screen.dart';
 export 'package:rock_med/screens/listview2_screen%20.dart';

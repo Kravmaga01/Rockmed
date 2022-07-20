@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:rock_med/providers/providers.dart';
 import '../themes/themes.dart';
 import '../widget/wiget.dart';
 
 class CreatePerfileBandaScreen extends StatelessWidget {
-  CreatePerfileBandaScreen({Key? key}) : super(key: key);
+  const CreatePerfileBandaScreen({Key? key}) : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     final Map<String, String> formValues = {
       'Nombre': 'NombreBanda',
       'Correo': 'correo',
       'Password': 'password',
-      'Genero': 'Genero musical'
+      'Genero': 'Genero musical',
     };
+
     String? validatorPasword;
     return Scaffold(
         body: SingleChildScrollView(
@@ -61,7 +62,7 @@ class CreatePerfileBandaScreen extends StatelessWidget {
               const SizedBox(height: 30),
               TextFormField(
                   // Este input debe ser diferente ya que con el validaremos y las contraseñas coinciden o no || si es menor de 8 digitos
-
+                  obscureText: true,
                   autocorrect: false,
                   showCursor: true,
                   keyboardType: TextInputType.name,
@@ -76,7 +77,7 @@ class CreatePerfileBandaScreen extends StatelessWidget {
               const SizedBox(height: 30),
               TextFormField(
                 // Este input debe ser diferente ya que con el validaremos y las contraseñas coinciden o no || si es menor de 8 digitos
-
+                obscureText: true,
                 autocorrect: false,
                 showCursor: true,
                 keyboardType: TextInputType.name,
@@ -99,12 +100,13 @@ class CreatePerfileBandaScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   FocusScope.of(context).requestFocus(FocusNode());
                   if (!formKey.currentState!.validate()) {
                     return;
                   }
-                  print(formValues);
+                  BandaService.instance.add(formValues);
+                  Navigator.popAndPushNamed(context, 'home_banda');
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(AppTheme.primary),

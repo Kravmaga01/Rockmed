@@ -9,7 +9,7 @@ class ConstuIpuntField extends StatelessWidget {
   final TextInputType? keyboardKey;
   final bool obscureText;
   final String formProperty;
-  final Map<String, String> formValues;
+  final Map<String, dynamic> formValues;
   final TextEditingController? controller;
   const ConstuIpuntField(
       {Key? key,

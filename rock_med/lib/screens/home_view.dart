@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rock_med/providers/banda_service.dart';
+import 'package:rock_med/providers/providers.dart';
 import 'package:rock_med/router/routersApp.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +9,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productsService = Provider.of<BandaService>(context);
     return Scaffold(
         appBar: AppBar(
           title: const Center(

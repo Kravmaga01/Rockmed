@@ -3,6 +3,7 @@ import 'package:rock_med/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class RouterApp {
+  //Todo: Cambiar la ruta inical por  'Mianpage'
   static const initiaRouter = 'home';
 
   static final menuOption = <RoutersOption>[
@@ -39,12 +40,12 @@ class RouterApp {
     RoutersOption(
         route: 'creteProfileBar',
         name: 'createProfilebar',
-        screen: const CreateProfileBarScreen(),
+        screen: CreateProfileBarScreen(),
         icon: Icons.create),
     RoutersOption(
         route: 'creteProfileUsuario',
         name: 'createProfileUsuario',
-        screen: const CreateProfileUsuarioScreen(),
+        screen: CreateProfileUsuarioScreen(),
         icon: Icons.create),
     RoutersOption(
       route: 'home',
@@ -55,7 +56,7 @@ class RouterApp {
     RoutersOption(
         route: 'home_usuario',
         name: 'home_usuario',
-        screen: const AlertScreen(),
+        screen: const HomeUsuarioScreen(),
         icon: Icons.home),
     RoutersOption(
         route: 'home_banda',
@@ -72,6 +73,11 @@ class RouterApp {
         name: 'acept_terminos_create',
         screen: const AceptTerminosCreate(),
         icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'Mianpage',
+        name: 'Mainpage',
+        screen: const MianPage(),
+        icon: Icons.home_outlined)
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {

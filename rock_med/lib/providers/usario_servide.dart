@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class BandaService {
+class UsuarioService {
   static CollectionReference instance =
-      FirebaseFirestore.instance.collection('banda');
+      FirebaseFirestore.instance.collection('usuarios');
 }
