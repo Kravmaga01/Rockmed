@@ -7,7 +7,11 @@ class AppTheme {
       // color primario
       primaryColor: Colors.pink,
 
+      // style de SnackBar
+      snackBarTheme: const SnackBarThemeData(
+          backgroundColor: primary, contentTextStyle: TextStyle(color: second)),
       // appBartheme
+
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
       inputDecorationTheme: const InputDecorationTheme(
 

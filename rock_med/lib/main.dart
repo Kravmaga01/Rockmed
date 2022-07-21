@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rock_med/providers/providers.dart';
 import 'package:rock_med/router/routersApp.dart';
 import 'package:rock_med/screens/screens.dart';
 import 'package:rock_med/themes/themes_standar.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: Utils.messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Material App',

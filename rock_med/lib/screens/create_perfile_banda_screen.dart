@@ -50,6 +50,7 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
       } on FirebaseAuthException catch (e) {
         //todo: se debe lanzar una alerta con el error capturado,
         print(e);
+        Utils.showSnackBar(e.message);
       }
 
       // Navegador con contexto trabajando
