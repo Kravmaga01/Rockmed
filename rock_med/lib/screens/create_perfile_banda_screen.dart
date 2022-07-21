@@ -3,9 +3,16 @@ import 'package:rock_med/providers/providers.dart';
 import '../themes/themes.dart';
 import '../widget/wiget.dart';
 
-class CreatePerfileBandaScreen extends StatelessWidget {
+class CreatePerfileBandaScreen extends StatefulWidget {
   const CreatePerfileBandaScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CreatePerfileBandaScreen> createState() =>
+      _CreatePerfileBandaScreenState();
+}
+
+class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
+  @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     final Map<String, String> formValues = {
