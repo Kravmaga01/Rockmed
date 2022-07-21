@@ -75,7 +75,7 @@ class _CreateProfileUsuarioScreenState
                 // espacio en blanco
                 height: 50,
               ),
-              const Text('Crea tu perfil banda',
+              const Text('Crea tu perfil usuario',
                   style: AppThemeText.styleTitle, textAlign: TextAlign.center),
               const SizedBox(height: 30),
               ConstuIpuntField(
