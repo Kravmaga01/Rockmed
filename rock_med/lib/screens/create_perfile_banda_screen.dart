@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/providers/providers.dart';
+import '../main.dart';
 import '../themes/themes.dart';
 import '../widget/wiget.dart';
 
@@ -21,6 +23,38 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
       'Password': 'password',
       'Genero': 'Genero musical',
     };
+    final emailController =
+        TextEditingController(); // se genera un controlador de texto
+    final passwordController =
+        TextEditingController(); // tanto para el mail como el password
+    @override
+    void dispose() {
+      // de esta manera podemos manetener el estado del controller.
+
+      emailController.dispose();
+      passwordController.dispose();
+      super.dispose();
+    }
+
+    Future singUP() async {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => const Center(
+                child: CircularProgressIndicator(),
+              ));
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim());
+      } on FirebaseAuthException catch (e) {
+        //todo: se debe lanzar una alerta con el error capturado,
+        print(e);
+      }
+
+      // Navegador con contexto trabajando
+      navigatorKey.currentState!.popAndPushNamed('Mianpage');
+    }
 
     String? validatorPasword;
     return Scaffold(
@@ -49,6 +83,7 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
               const SizedBox(height: 30),
               // Este text fromFiled debe ser diferente al resto por el echo de que devemos validar si es un correo valido
               TextFormField(
+                controller: emailController,
                 autocorrect: false,
                 showCursor: true,
                 keyboardType: TextInputType.emailAddress,
@@ -83,6 +118,7 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
                   }),
               const SizedBox(height: 30),
               TextFormField(
+                controller: passwordController,
                 // Este input debe ser diferente ya que con el validaremos y las contraseñas coinciden o no || si es menor de 8 digitos
                 obscureText: true,
                 autocorrect: false,
@@ -113,7 +149,7 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
                     return;
                   }
                   BandaService.instance.add(formValues);
-                  Navigator.popAndPushNamed(context, 'home_banda');
+                  singUP();
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(AppTheme.primary),
