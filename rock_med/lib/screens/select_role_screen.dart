@@ -55,14 +55,14 @@ class SelectProfileScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 70),
                     child: ConstumenElevedButton(
                       value: 'Banda',
-                      ruta: 'acept_terminos_create',
+                      ruta: 'acept_terminos_create_banda',
                       colorFondo: AppTheme.second,
                       colorFuente: AppTheme.primary,
                     ),
                   ),
                   ConstumenElevedButton(
                     value: 'Bar',
-                    ruta: 'creteProfileBar',
+                    ruta: 'acept_terminos_create_bar',
                     colorFondo: AppTheme.second,
                     colorFuente: AppTheme.primary,
                   )
@@ -76,7 +76,7 @@ class SelectProfileScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 90),
                 child: ConstumenElevedButton(
                   value: 'Usuario',
-                  ruta: 'creteProfileUsuario',
+                  ruta: 'acept_terminos_create_usuario',
                   colorFondo: AppTheme.second,
                   colorFuente: AppTheme.primary,
                 ),

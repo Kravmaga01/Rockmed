@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/providers/usario_servide.dart';
+import 'package:rock_med/providers/utils.dart';
 
 import '../main.dart';
 import '../themes/themes.dart';
@@ -52,6 +53,7 @@ class _CreateProfileUsuarioScreenState
       } on FirebaseAuthException catch (e) {
         //todo: se debe lanzar una alerta con el error capturado,
         print(e);
+        Utils.showSnackBar(e.message);
       }
 
       // Navegador con contexto trabajando

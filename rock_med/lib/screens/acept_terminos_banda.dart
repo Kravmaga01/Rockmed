@@ -4,8 +4,8 @@ import 'package:rock_med/themes/themes.dart';
 import '../themes/themes_standar.dart';
 import '../widget/wiget.dart';
 
-class AceptTerminosCreate extends StatelessWidget {
-  const AceptTerminosCreate({Key? key}) : super(key: key);
+class AceptTerminosCreatebanda extends StatelessWidget {
+  const AceptTerminosCreatebanda({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class AceptTerminosCreate extends StatelessWidget {
                 padding: EdgeInsets.only(left: 9.0),
                 child: Text(
                   // caja de texto
-                  'Te contamos que sólo podras registrar unperfil por Banda',
+                  'Te contamos que sólo podras registrar un perfil por Banda',
                   style: TextStyle(fontSize: 25), textAlign: TextAlign.center,
                 ),
               ),

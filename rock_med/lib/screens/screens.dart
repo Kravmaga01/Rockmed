@@ -1,4 +1,7 @@
-export 'package:rock_med/screens/acept_terminos.dart';
+export 'package:rock_med/screens/acept_terminos%20usuario%20copy.dart';
+export 'package:rock_med/screens/acept_terminos_banda.dart';
+export 'package:rock_med/screens/acept_terminos%20bar.dart';
+export 'package:rock_med/screens/acept_terminos_banda.dart';
 export 'package:rock_med/screens/mainpage.dart';
 export 'package:rock_med/screens/create_profile_usuario_screen.dart';
 export 'package:rock_med/screens/create_profile_bar_screen.dart';

@@ -69,15 +69,25 @@ class RouterApp {
         screen: const HomeBarScreen(),
         icon: Icons.home_outlined),
     RoutersOption(
-        route: 'acept_terminos_create',
-        name: 'acept_terminos_create',
-        screen: const AceptTerminosCreate(),
-        icon: Icons.home_outlined),
-    RoutersOption(
         route: 'Mianpage',
         name: 'Mainpage',
         screen: const MianPage(),
-        icon: Icons.home_outlined)
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'acept_terminos_create_banda',
+        name: 'acept_terminos_create_banda',
+        screen: const AceptTerminosCreatebanda(),
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'acept_terminos_create_bar',
+        name: 'acept_terminos_create_bar',
+        screen: const AceptTerminosCreatebar(),
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'acept_terminos_create_usuario',
+        name: 'acept_terminos_create_usuario',
+        screen: const AceptTerminosCreateUsuario(),
+        icon: Icons.home_outlined),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {

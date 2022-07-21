@@ -50,6 +50,7 @@ class _CreateProfileBarScreenState extends State<CreateProfileBarScreen> {
       } on FirebaseAuthException catch (e) {
         //todo: se debe lanzar una alerta con el error capturado,
         print(e);
+        Utils.showSnackBar(e.message);
       }
 
       // Navegador con contexto trabajando

@@ -58,7 +58,7 @@ class WelcomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30),
                     child: ConstumenElevedButton(
-                        value: 'inciar sesión', ruta: 'login'),
+                        value: 'inciar sesión', ruta: 'Mianpage'),
                   ),
                   Padding(
                     padding: EdgeInsets.only(right: 5),
