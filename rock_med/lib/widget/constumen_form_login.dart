@@ -103,11 +103,11 @@ class _LoginFormState extends State<LoginForm> {
                   ? null
                   : () async {
                       // se creo la condicón de que si estaba cargando bloquee el botón de lo contrario ejecute la acción
-                      FocusScope.of(context)
-                          .unfocus(); // esta funciona permitif (!loginForm.isValidForm()) return;
+                      FocusScope.of(context).unfocus();
+                      if (!loginForm.isValidForm())
+                        return; // esta funciona permitif (!loginForm.isValidForm()) return;
                       singIN();
                       // esta funciona permitira esconder el teclado en caso de que opriman el bottón
-                      if (!loginForm.isValidForm()) return;
                     },
               color: AppTheme.primary,
               shape: RoundedRectangleBorder(
@@ -134,6 +134,6 @@ class _LoginFormState extends State<LoginForm> {
     }
 
     // Navegador con contexto trabajando
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    navigatorKey.currentState!.popAndPushNamed('Mianpage');
   }
 }
