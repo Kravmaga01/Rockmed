@@ -1,11 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/providers/providers.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/wiget.dart';
 
-class CreateProfileBarScreen extends StatelessWidget {
+import '../main.dart';
+
+class CreateProfileBarScreen extends StatefulWidget {
   const CreateProfileBarScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CreateProfileBarScreen> createState() => _CreateProfileBarScreenState();
+}
+
+class _CreateProfileBarScreenState extends State<CreateProfileBarScreen> {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
@@ -15,6 +23,38 @@ class CreateProfileBarScreen extends StatelessWidget {
       'Password': 'password',
       'Ubicacion': 'Ubucacnion',
     };
+    final emailController =
+        TextEditingController(); // se genera un controlador de texto
+    final passwordController =
+        TextEditingController(); // tanto para el mail como el password
+    @override
+    void dispose() {
+      // de esta manera podemos manetener el estado del controller.
+
+      emailController.dispose();
+      passwordController.dispose();
+      super.dispose();
+    }
+
+    Future singUP() async {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => const Center(
+                child: CircularProgressIndicator(),
+              ));
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim());
+      } on FirebaseAuthException catch (e) {
+        //todo: se debe lanzar una alerta con el error capturado,
+        print(e);
+      }
+
+      // Navegador con contexto trabajando
+      navigatorKey.currentState!.popAndPushNamed('Mianpage');
+    }
 
     String? validatorPasword;
     return Scaffold(
@@ -44,6 +84,7 @@ class CreateProfileBarScreen extends StatelessWidget {
 
               // Este text fromFiled debe ser diferente al resto por el echo de que devemos validar si es un correo valido
               TextFormField(
+                controller: emailController,
                 autocorrect: false,
                 showCursor: true,
                 keyboardType: TextInputType.emailAddress,
@@ -78,6 +119,7 @@ class CreateProfileBarScreen extends StatelessWidget {
                   }),
               const SizedBox(height: 30),
               TextFormField(
+                controller: passwordController,
                 // Este input debe ser diferente ya que con el validaremos y las contraseñas coinciden o no || si es menor de 8 digitos
                 obscureText: true,
                 autocorrect: false,
@@ -97,7 +139,7 @@ class CreateProfileBarScreen extends StatelessWidget {
               ConstuIpuntField(
                 labelText: 'Ubicacion',
                 keyboardKey: TextInputType.text,
-                formProperty: 'ubicacion',
+                formProperty: 'Ubicacion',
                 formValues: formValues,
               ),
               const SizedBox(height: 30),
@@ -108,7 +150,7 @@ class CreateProfileBarScreen extends StatelessWidget {
                     return;
                   }
                   BarService.instance.add(formValues);
-                  Navigator.popAndPushNamed(context, 'home_bar');
+                  singUP();
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(AppTheme.primary),
