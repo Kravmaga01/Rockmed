@@ -1,13 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/providers/usario_servide.dart';
 
+import '../main.dart';
 import '../themes/themes.dart';
 import '../widget/constum_input_field.dart';
 
-class CreateProfileUsuarioScreen extends StatelessWidget {
+class CreateProfileUsuarioScreen extends StatefulWidget {
   const CreateProfileUsuarioScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CreateProfileUsuarioScreen> createState() =>
+      _CreateProfileUsuarioScreenState();
+}
+
+class _CreateProfileUsuarioScreenState
+    extends State<CreateProfileUsuarioScreen> {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
@@ -17,6 +26,38 @@ class CreateProfileUsuarioScreen extends StatelessWidget {
       'Password': 'password',
       'Fecha': 'FechaDeNacimiento',
     };
+    final emailController =
+        TextEditingController(); // se genera un controlador de texto
+    final passwordController =
+        TextEditingController(); // tanto para el mail como el password
+    @override
+    void dispose() {
+      // de esta manera podemos manetener el estado del controller.
+
+      emailController.dispose();
+      passwordController.dispose();
+      super.dispose();
+    }
+
+    Future singUP() async {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => const Center(
+                child: CircularProgressIndicator(),
+              ));
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim());
+      } on FirebaseAuthException catch (e) {
+        //todo: se debe lanzar una alerta con el error capturado,
+        print(e);
+      }
+
+      // Navegador con contexto trabajando
+      navigatorKey.currentState!.popAndPushNamed('Mianpage');
+    }
 
     String? validatorPasword;
     return Scaffold(
@@ -45,6 +86,7 @@ class CreateProfileUsuarioScreen extends StatelessWidget {
               const SizedBox(height: 30),
               // Este text fromFiled debe ser diferente al resto por el echo de que devemos validar si es un correo valido
               TextFormField(
+                controller: emailController,
                 autocorrect: false,
                 showCursor: true,
                 keyboardType: TextInputType.emailAddress,
@@ -79,6 +121,7 @@ class CreateProfileUsuarioScreen extends StatelessWidget {
                   }),
               const SizedBox(height: 30),
               TextFormField(
+                controller: passwordController,
                 // Este input debe ser diferente ya que con el validaremos y las contraseñas coinciden o no || si es menor de 8 digitos
                 obscureText: true,
                 autocorrect: false,
@@ -109,8 +152,7 @@ class CreateProfileUsuarioScreen extends StatelessWidget {
                     return;
                   }
                   UsuarioService.instance.add(formValues);
-                  UsuarioService.instance.get();
-                  Navigator.popAndPushNamed(context, 'home_usuario');
+                  singUP();
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(AppTheme.primary),
