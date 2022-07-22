@@ -19,7 +19,7 @@ class MianPage extends StatelessWidget {
             return const Center(
                 child: Text('El usuario o contraseña son incorretos'));
           } else if (snapshot.hasData) {
-            return const HomeBandaScreen();
+            return const VerifyEmaiglScreen();
           } else {
             return const LoginScreen();
           }

@@ -25,7 +25,7 @@ class RouterApp {
     RoutersOption(
         route: 'recoveriPassword',
         name: 'recoveriPassword',
-        screen: const RecoverPasswordScreen(),
+        screen: RecoverPasswordScreen(),
         icon: Icons.warning),
     RoutersOption(
         route: 'alertPassword',
