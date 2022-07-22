@@ -18,7 +18,6 @@ class _RecoverPasswordScreenState extends State<RecoverPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 100),
@@ -31,6 +30,9 @@ class _RecoverPasswordScreenState extends State<RecoverPasswordScreen> {
                   crossAxisAlignment: CrossAxisAlignment
                       .center, // alineación horizontal de la pantalla
                   children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Image.asset(
                       // imagen que viene en el paquekete de la aplicación
                       //logo principal
@@ -44,6 +46,12 @@ class _RecoverPasswordScreenState extends State<RecoverPasswordScreen> {
                     const Text(
                       'Digita el correo que ingresaste al crear tu cuenta \n te enviaremos  toda tu información de acceso a la plataforma',
                       textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
                     ),
                     TextFormField(
                       controller: emailController,
@@ -62,6 +70,9 @@ class _RecoverPasswordScreenState extends State<RecoverPasswordScreen> {
                             ? null
                             : "El formato ingresado no es permitido, porfavot verifique ";
                       },
+                    ),
+                    const SizedBox(
+                      height: 30,
                     ),
                     ElevatedButton(
                       onPressed: () async {
