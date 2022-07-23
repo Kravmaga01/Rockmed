@@ -2,29 +2,48 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/constume_top_profile.dart';
-
+import 'package:rock_med/widget/wiget.dart';
 import '../providers/providers.dart';
 
 class Homescreen extends StatelessWidget {
   Homescreen({
     Key? key,
     required this.user,
+    required this.onClicked,
   }) : super(key: key);
 
   User user;
   final userPrefece = UserPreferences.myUser;
-  final double coverHeight = 280;
-  final double profileHeight = 144;
+  final double coverHeight = 220;
+  final double profileHeight = 220;
+  final VoidCallback onClicked;
+  final double contumenButom = 87;
 
   @override
   Widget build(BuildContext context) {
     final top = coverHeight - profileHeight / 2;
+    final topMenu = coverHeight - profileHeight / 100;
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
-        ProfileWidget(imagePath: userPrefece.imagePath, onClicked: () async {}),
-        const SizedBox(height: 24),
-        buildName(userPrefece),
+        Stack(
+          children: [
+            buildCoverImage(userPrefece, onClicked, coverHeight),
+            Positioned(
+              top: top,
+              child: Row(children: [
+                ProfileWidget(
+                    imagePath: userPrefece.imagePath,
+                    onClicked: () async {},
+                    coverImagPath: userPrefece.coverImagPath),
+                Padding(
+                    padding: const EdgeInsets.only(left: 40),
+                    child: buildName(userPrefece)),
+              ]),
+            ),
+          ],
+        ),
+        MenuButton(contumenButom: contumenButom)
       ],
     );
   }
@@ -37,19 +56,42 @@ class Homescreen extends StatelessWidget {
           ),
         ],
       );
+
+  Widget buildCoverImage(userPreferece, onClicked, coverHeight) {
+    final image = NetworkImage(userPreferece.coverImagPath);
+    return Material(
+        color: Colors.transparent,
+        child: Ink.image(
+          image: image,
+          width: double.infinity,
+          height: coverHeight,
+          fit: BoxFit.cover,
+          child: InkWell(
+            onTap: onClicked,
+          ),
+        ));
+  }
 }
 
+
+
+
+/*
 Stack builTop(double top) {
   return Stack(clipBehavior: Clip.none, children: [
-    buildCoverImage(''),
-    Positioned(top: top, child: buildProfileImage('')),
+    buildCoverImage(
+        'https://media.tenor.com/images/7f0ef936a94e093d1355859ca7da5c82/tenor.png'),
+    Positioned(
+        top: top,
+        child: buildProfileImage(
+            'https://media.tenor.com/images/7f0ef936a94e093d1355859ca7da5c82/tenor.png')),
   ]);
 }
 
 Widget buildCoverImage(coverHeight) => Container(
       color: AppTheme.primary,
       child: Image.network(
-        'https://i.scdn.co/image/ab67616d0000b273482c43a36394309c8ee09b38',
+        'https://media.tenor.com/images/7f0ef936a94e093d1355859ca7da5c82/tenor.png',
         width: double.infinity,
         height: coverHeight,
         fit: BoxFit.cover,
@@ -61,3 +103,4 @@ Widget buildProfileImage(profileHeight) => CircleAvatar(
       backgroundImage: const NetworkImage(
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-Ja63pG-b1ebiic3ZwhA891LcdOW-UnYoqw&usqp=CAU'),
     );
+*/

@@ -3,21 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 
 class ProfileWidget extends StatelessWidget {
+  final String coverImagPath;
   final String imagePath;
   final VoidCallback onClicked;
 
   const ProfileWidget(
-      {Key? key, required this.imagePath, required this.onClicked})
+      {Key? key,
+      required this.imagePath,
+      required this.onClicked,
+      required this.coverImagPath})
       : super(key: key);
-
+  final double coverHeight = 280;
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme.primary;
     return Center(
-      child: Stack(children: [
-        buildImage(),
-        Positioned(bottom: 0, right: 4, child: buildEditiIcon(color)),
-      ]),
+      child: Column(
+        children: [
+          Stack(children: [
+            buildImage(),
+            Positioned(bottom: 0, right: 4, child: buildEditiIcon(color)),
+          ])
+        ],
+      ),
     );
   }
 
@@ -29,8 +37,8 @@ class ProfileWidget extends StatelessWidget {
           child: Ink.image(
             image: image,
             fit: BoxFit.cover,
-            width: 128,
-            height: 128,
+            width: 110,
+            height: 110,
             child: InkWell(
               onTap: onClicked,
             ),
