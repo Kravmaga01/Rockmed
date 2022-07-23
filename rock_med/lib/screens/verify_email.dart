@@ -1,33 +1,36 @@
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/screens/screens.dart';
-
 import '../providers/providers.dart';
 import '../themes/themes.dart';
 
+//* ESTE SCREEN SE CREA A LA ESPERA DE LA CONFIRMACIÓN DEL CORREO
 class VerifyEmaiglScreen extends StatefulWidget {
-  const VerifyEmaiglScreen({Key? key}) : super(key: key);
+  const VerifyEmaiglScreen({Key? key}) : super(key: key); //*LLAVE
 
   @override
-  State<VerifyEmaiglScreen> createState() => _VerifyEmaiglScreenState();
+  State<VerifyEmaiglScreen> createState() =>
+      _VerifyEmaiglScreenState(); //* ESTADO
 }
 
 class _VerifyEmaiglScreenState extends State<VerifyEmaiglScreen> {
-  bool isEmailVerified = false;
-  bool canResendEmail = false;
-  Timer? timer;
-  final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
+  //TODO: VERIFICACIÓN DE DATODS
+  bool isEmailVerified = false; //* SE INICIA LA VALIDACIÓN EL FALSE
+  bool canResendEmail = false; //* SE INICIA EL RESEN EN FALSE
+  Timer? timer; //* ALMACENARA EL VALOR DEL TIEMPO DE ESPERA
+  final emailController = TextEditingController(); //* VALOR DEL EMAIL
   @override
   void initState() {
-    super.initState();
-    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    //*SOBRE ESCRITURA
+    super.initState(); //* SE INICIA LA EL CONSTRUCTOR SUPERIOR
+    isEmailVerified = FirebaseAuth.instance.currentUser!
+        .emailVerified; //* isEmailVerified  SE ALMACENA EL VALOR VERIFICADO DEL IMAIL
     if (!isEmailVerified) {
-      sendVerificationEmail();
+      //* SI EL VALOR ES DIFERENTE
+      sendVerificationEmail(); //* SE ENVIA EL VALOR AL CORREO
       timer = Timer.periodic(
+        //* TIEMPO DE ESPERA DE VALIDACÓN DEL CORREO
         Duration(seconds: 3),
         (timer) => checkEmailVerified(),
       );
@@ -35,18 +38,24 @@ class _VerifyEmaiglScreenState extends State<VerifyEmaiglScreen> {
   }
 
   void dispose() {
+    //* SE HABILITA EL TIMER
     timer?.cancel();
     super.dispose();
   }
 
   Future checkEmailVerified() async {
-    await FirebaseAuth.instance.currentUser!.reload();
+    //* VERIFICA QUE SEA CORRECTO EL CORREO.
+    await FirebaseAuth.instance.currentUser!
+        .reload(); //* SE ESPERA LA EJECUCIÓN
     setState(() {
-      isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+      //* SE EJECUTA EL ESTADO
+      isEmailVerified = FirebaseAuth
+          .instance.currentUser!.emailVerified; //*RESPONDE A LA SOLICITUD
     });
   }
 
   Future sendVerificationEmail() async {
+    //* SI EL ESTADO ES CORRECTO SE RETORNA TRUE DE LA CONTRARIO FALSE
     try {
       final user = FirebaseAuth.instance.currentUser!;
       await user.sendEmailVerification();
@@ -57,6 +66,7 @@ class _VerifyEmaiglScreenState extends State<VerifyEmaiglScreen> {
       Utils.showSnackBar(e.toString());
     }
   }
+//TODO: INICIO DEL ESTILO
 
   @override
   Widget build(BuildContext context) => isEmailVerified
@@ -92,6 +102,7 @@ class _VerifyEmaiglScreenState extends State<VerifyEmaiglScreen> {
               ),
               icon: const Icon(Icons.email, size: 32),
               label: const Text('Reenviar verificación'),
+              //* SI  canResenEmal es valido  retornara  senverificationemail de lo contrario sera null
               onPressed: canResendEmail ? sendVerificationEmail : null,
             ),
             const SizedBox(
