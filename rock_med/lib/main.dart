@@ -1,19 +1,26 @@
-import 'package:firebase_auth/firebase_auth.dart';
+//todo : El mian es el archivo principal de nuestra aplicación.
+
 import 'package:provider/provider.dart';
 import 'package:rock_med/providers/providers.dart';
 import 'package:rock_med/router/routersApp.dart';
-import 'package:rock_med/screens/screens.dart';
 import 'package:rock_med/services/banda_service.dart';
+import 'package:rock_med/shere_preferences/preferences.dart';
 import 'package:rock_med/themes/themes_standar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'package:cloud_firestore/cloud_firestore.dart';
 
+//* ejecucion del main
 void main() async {
-  WidgetsFlutterBinding();
-  await Firebase.initializeApp();
-  runApp(const AppStete());
+  // espera a que inicialice la base de datos y la aplicacción
+  WidgetsFlutterBinding(); // este wiget nos sirve para indicar que debe de esperar para constuir los wiget asincornos
+  await Firebase
+      .initializeApp(); // inicializamos la aplicación creada en firebase
+  await Preferences
+      .init(); // se inician las preferencias de usuario al macenadas de manera local
+  runApp(const AppStete()); // se corre  el appstate
 }
+
+//Todo: El appstate inicializa la realdtabase que nos permitira modelar los datos en tiempo real
 
 class AppStete extends StatelessWidget {
   const AppStete({Key? key}) : super(key: key);
@@ -21,13 +28,17 @@ class AppStete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => ProductsService())],
-      child: MyApp(),
+      // multiProvider para permitir diferentes provider de ser necesario
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProductsService())
+      ], //! verifica que la conexión a la base de datos sea correcta enviando el contexto
+      child: MyApp(), // si la noticiación es correcta se corre la app
     );
   }
 }
 
-final navigatorKey = GlobalKey<NavigatorState>();
+final navigatorKey =
+    GlobalKey<NavigatorState>(); //! la navigatorKey sera la llave global
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
@@ -35,14 +46,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      scaffoldMessengerKey: Utils.messengerKey,
-      navigatorKey: navigatorKey,
+      scaffoldMessengerKey: Utils
+          .messengerKey, // Permitira capturar un error y arrojarlo como un snackbar
+      navigatorKey: navigatorKey, // la llave global para mantner estados
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: RouterApp.initiaRouter,
-      routes: RouterApp.getAppRoutes(),
-      onGenerateRoute: RouterApp.onGenerateRoute,
-      theme: AppTheme.darkTheme,
+      initialRoute: RouterApp.initiaRouter, // ruta inical
+      routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
+      onGenerateRoute:
+          RouterApp.onGenerateRoute, // genera las rutas exitentes para el uso
+      theme: AppTheme.darkTheme, // temas principal.
     );
   }
 }
