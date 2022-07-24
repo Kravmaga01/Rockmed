@@ -56,19 +56,9 @@ class RouterApp {
       icon: Icons.home,
     ),
     RoutersOption(
-        route: 'home_usuario',
-        name: 'home_usuario',
-        screen: const HomeUsuarioScreen(),
-        icon: Icons.home),
-    RoutersOption(
         route: 'home_banda',
         name: 'home_banda',
         screen: const HomeBandaScreen(),
-        icon: Icons.home_outlined),
-    RoutersOption(
-        route: 'home_bar',
-        name: 'home_bar',
-        screen: const HomeBarScreen(),
         icon: Icons.home_outlined),
     RoutersOption(
         route: 'Mianpage',
