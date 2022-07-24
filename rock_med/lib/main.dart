@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 
 //* ejecucion del main
+
+//!importante
 void main() async {
   // espera a que inicialice la base de datos y la aplicacción
   WidgetsFlutterBinding(); // este wiget nos sirve para indicar que debe de esperar para constuir los wiget asincornos
