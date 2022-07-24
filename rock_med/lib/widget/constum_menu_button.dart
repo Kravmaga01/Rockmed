@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rock_med/widget/wiget.dart';
 
 import '../themes/themes.dart';
 
@@ -23,40 +24,39 @@ class MenuButton extends StatelessWidget {
             )),
         height: 50,
         child: Row(
-          // para cer más organizados todo lo ponmos dentro de un una Column
-          mainAxisAlignment: MainAxisAlignment
-              .spaceBetween, // aliniación  vertical de la pantalla
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: null,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppTheme.primary),
+            // para cer más organizados todo lo ponmos dentro de un una Column
+            mainAxisAlignment: MainAxisAlignment
+                .spaceBetween, // aliniación  vertical de la pantalla
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => const AboutScreen(),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(AppTheme.primary),
+                ),
+                child: SizedBox(
+                    width: contumenButom,
+                    child: const Center(child: Text('Crear'))),
               ),
-              child: SizedBox(
-                  width: contumenButom,
-                  child: const Center(child: Text('Crear'))),
-            ),
-            ElevatedButton(
-              onPressed: null,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppTheme.primary),
+              ElevatedButton(
+                onPressed: () => const GaleryScreen(),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(AppTheme.primary),
+                ),
+                child: SizedBox(
+                    width: contumenButom,
+                    child: const Center(child: Text('Crear'))),
               ),
-              child: SizedBox(
-                  width: contumenButom,
-                  child: const Center(child: Text('Crear'))),
-            ),
-            ElevatedButton(
-              onPressed: null,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppTheme.primary),
+              ElevatedButton(
+                onPressed: () => EventScreen,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(AppTheme.primary),
+                ),
+                child: SizedBox(
+                    width: contumenButom,
+                    child: const Center(child: Text('Crear'))),
               ),
-              child: SizedBox(
-                  width: contumenButom,
-                  child: const Center(child: Text('Crear'))),
-            ),
-          ],
-        ),
+            ]),
       ),
     );
   }

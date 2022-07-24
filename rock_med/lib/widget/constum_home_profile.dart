@@ -21,11 +21,13 @@ class Homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final funtiones = [];
     final top = coverHeight - profileHeight / 2;
     final topMenu = coverHeight - profileHeight / 100;
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      children: [
+    return Scaffold(
+      appBar: AppBar(),
+      drawer: const SideMenu(),
+      body: Stack(children: [
         Stack(
           children: [
             buildCoverImage(userPrefece, onClicked, coverHeight),
@@ -43,10 +45,62 @@ class Homescreen extends StatelessWidget {
             ),
           ],
         ),
-        MenuButton(contumenButom: contumenButom)
-      ],
-    );
+        ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            Stack(
+              children: [
+                buildCoverImage(userPrefece, onClicked, coverHeight),
+                Positioned(
+                  top: top,
+                  child: Row(children: [
+                    ProfileWidget(
+                        imagePath: userPrefece.imagePath,
+                        onClicked: () {},
+                        coverImagPath: userPrefece.coverImagPath),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 40),
+                        child: buildName(userPrefece)),
+                  ]),
+                ),
+              ],
+            ),
+            MenuButton(contumenButom: contumenButom),
+          ],
+        ),
+      ]),
+    ); /* ListView(physics: const BouncingScrollPhysics(), children: [
+      Stack(
+        children: [
+          S buildCoverImage(userPrefece, onClicked, coverHeight),
+            Positioned(
+              top: top,
+              child: Row(children: [
+                ProfileWidget(
+                    imagePath: userPrefece.imagePath,
+                    onClicked: () async {},
+                    coverImagPath: userPrefece.coverImagPath),
+                Padding(
+                    padding: const EdgeInsets.only(left: 40),
+                    child: buildName(userPrefece)),
+              ]),
+            ),
+          ],
+        ),
+        MenuButton(contumenButom: contumenButom),
+        
+          ,
+        ],
+      )
+    ]);*/
   }
+
+  Widget buildInfomation(funtione, index) => Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      color: AppTheme.second,
+      child: Container(
+        child: funtione,
+      ));
 
   Widget buildName(userPreferences) => Column(
         children: [
@@ -73,8 +127,34 @@ class Homescreen extends StatelessWidget {
   }
 }
 
+class EventScreen extends StatelessWidget {
+  const EventScreen({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 1000,
+    );
+  }
+}
 
+class GaleryScreen extends StatelessWidget {
+  const GaleryScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('hola');
+  }
+}
+
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('hola');
+  }
+}
 
 /*
 Stack builTop(double top) {

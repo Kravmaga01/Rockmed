@@ -88,6 +88,11 @@ class RouterApp {
         name: 'acept_terminos_create_usuario',
         screen: const AceptTerminosCreateUsuario(),
         icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'settings',
+        name: 'settings',
+        screen: const SettingScreen(),
+        icon: Icons.home_outlined)
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {

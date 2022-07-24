@@ -1,3 +1,5 @@
+export 'package:rock_med/screens/seetting_screen.dart';
+
 export 'package:rock_med/screens/verify_email.dart';
 
 export 'package:rock_med/screens/acept_terminos%20usuario%20copy.dart';
