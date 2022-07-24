@@ -12,17 +12,9 @@ class SideMenu extends StatelessWidget {
       children: [
         _DrawerHeader(),
         ListTile(
-          leading: const Icon(Icons.person),
-          title: const Text(
-            'Actualizar Informacion',
-            style: TextStyle(color: AppTheme.primary),
-          ),
-          onTap: () {},
-        ),
-        ListTile(
           leading: const Icon(Icons.photo_outlined),
           title: const Text(
-            'Actualizar galeria',
+            'galeria',
             style: TextStyle(
               color: AppTheme.primary,
             ),
@@ -30,14 +22,28 @@ class SideMenu extends StatelessWidget {
           onTap: () {},
         ),
         ListTile(
-          leading: const Icon(Icons.event),
+          leading: const Icon(Icons.description),
+          title: const Text(
+            'Descripción',
+            style: TextStyle(
+              color: AppTheme.primary,
+            ),
+          ),
+          onTap: () {
+            Navigator.popAndPushNamed(context, 'descripcion');
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.event_note_outlined),
           title: const Text(
             'Opciones Evento',
             style: TextStyle(
               color: AppTheme.primary,
             ),
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.popAndPushNamed(context, 'settingsEvent');
+          },
         ),
         ListTile(
           leading: const Icon(Icons.info_rounded),
@@ -50,7 +56,7 @@ class SideMenu extends StatelessWidget {
           onTap: () {
             Navigator.popAndPushNamed(context, 'settings');
           },
-        )
+        ),
       ],
     ));
   }
@@ -64,10 +70,10 @@ class _DrawerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DrawerHeader(
-      child: Container(),
       decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/drawer.jpeg'), fit: BoxFit.cover)),
+      child: Container(),
     );
   }
 }

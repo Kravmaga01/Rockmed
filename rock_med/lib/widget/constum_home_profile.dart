@@ -65,7 +65,6 @@ class Homescreen extends StatelessWidget {
                 ),
               ],
             ),
-            MenuButton(contumenButom: contumenButom),
           ],
         ),
       ]),

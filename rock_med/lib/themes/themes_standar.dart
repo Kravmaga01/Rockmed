@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static const Color primary = Color.fromARGB(231, 246, 51, 116);
   static const Color second = Colors.white;
+  static const Color third = Color.fromARGB(187, 0, 0, 0);
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
       // color primario
       primaryColor: primary,

@@ -2,6 +2,8 @@ import 'package:rock_med/models/routers.dart';
 import 'package:rock_med/screens/screens.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/settings_event_screen.dart';
+
 class RouterApp {
   //Todo: Cambiar la ruta inical por  'Mianpage'
   static const initiaRouter = 'home';
@@ -92,6 +94,16 @@ class RouterApp {
         route: 'settings',
         name: 'settings',
         screen: const SettingScreen(),
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'descripcion',
+        name: 'descripción',
+        screen: const DescrtionScreen(),
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'settingsEvent',
+        name: 'settingsEvent',
+        screen: const SettingsEvent(),
         icon: Icons.home_outlined)
   ];
 

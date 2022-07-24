@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rock_med/themes/themes.dart';
 
 import '../widget/wiget.dart';
 
@@ -11,8 +12,29 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(),
       // ignore: prefer_const_constructors
       drawer: SideMenu(),
-      body: const Center(
-        child: Text('SettingScreen'),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+            child: Column(
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            const Text(
+              'Ajustes',
+              style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.primary),
+            ),
+            const Divider(),
+            SwitchListTile.adaptive(
+                value: true,
+                title: const Text('Darkmode'),
+                onChanged: (value) {}),
+            const Divider(),
+          ],
+        )),
       ),
     );
   }
