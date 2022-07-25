@@ -21,7 +21,9 @@ class AppTheme {
       inputDecorationTheme: const InputDecorationTheme(
 
           // Este es el estilo por defecto sin interacción del usuario
+
           floatingLabelStyle: TextStyle(color: primary),
+          labelStyle: TextStyle(color: primary),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: primary),
               borderRadius: BorderRadius.only(

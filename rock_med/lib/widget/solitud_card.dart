@@ -125,10 +125,7 @@ class _EventDetails extends StatelessWidget {
             // titulo
             Text(
               'Discoduro G',
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               maxLines: 1,
               overflow: TextOverflow.ellipsis, //* permite que no se desborde
             ),

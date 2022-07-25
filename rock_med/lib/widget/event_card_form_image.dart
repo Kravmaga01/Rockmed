@@ -18,7 +18,7 @@ class EventFromImage extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(45), topRight: Radius.circular(45)),
           child: FadeInImage(
-            image: NetworkImage('https://via.placeholder.com/400x300/pink'),
+            image: NetworkImage('https://via.placeholder.com/400x300/green'),
             placeholder: AssetImage('assets/placeholder-title.gif'),
             fit: BoxFit.cover,
           ),
