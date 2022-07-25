@@ -3,11 +3,12 @@
 import 'package:provider/provider.dart';
 import 'package:rock_med/providers/providers.dart';
 import 'package:rock_med/router/routersApp.dart';
-import 'package:rock_med/services/banda_service.dart';
-import 'package:rock_med/shere_preferences/preferences.dart';
 import 'package:rock_med/themes/themes_standar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
+
+import 'services/banda_service.dart';
+import 'shere_preferences/preferences.dart';
 
 //* ejecucion del main
 
