@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rock_med/screens/solicitud_event_screen.dart';
 import '../themes/themes.dart';
 import '../widget/wiget.dart';
 
@@ -87,7 +88,8 @@ class SettingsEvent extends StatelessWidget {
                         color: AppTheme.primary,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () =>
+                        Navigator.popAndPushNamed(context, 'solicitudEvent'),
                   ),
                 ),
                 const SizedBox(
@@ -103,7 +105,8 @@ class SettingsEvent extends StatelessWidget {
                         color: AppTheme.primary,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () => Navigator.popAndPushNamed(
+                        context, 'createSolicitudEvent'),
                   ),
                 ),
                 Image.asset(

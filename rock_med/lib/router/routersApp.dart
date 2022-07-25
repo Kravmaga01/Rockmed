@@ -1,6 +1,7 @@
 import 'package:rock_med/models/routers.dart';
 import 'package:rock_med/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:rock_med/screens/solicitud_event_screen.dart';
 
 import '../screens/settings_event_screen.dart';
 
@@ -27,7 +28,7 @@ class RouterApp {
     RoutersOption(
         route: 'recoveriPassword',
         name: 'recoveriPassword',
-        screen: RecoverPasswordScreen(),
+        screen: const RecoverPasswordScreen(),
         icon: Icons.warning),
     RoutersOption(
         route: 'alertPassword',
@@ -37,17 +38,17 @@ class RouterApp {
     RoutersOption(
         route: 'creteProfileBanda',
         name: 'createProfilebanda',
-        screen: CreatePerfileBandaScreen(),
+        screen: const CreatePerfileBandaScreen(),
         icon: Icons.create),
     RoutersOption(
         route: 'creteProfileBar',
         name: 'createProfilebar',
-        screen: CreateProfileBarScreen(),
+        screen: const CreateProfileBarScreen(),
         icon: Icons.create),
     RoutersOption(
         route: 'creteProfileUsuario',
         name: 'createProfileUsuario',
-        screen: CreateProfileUsuarioScreen(),
+        screen: const CreateProfileUsuarioScreen(),
         icon: Icons.create),
     RoutersOption(
       route: 'home',
@@ -94,6 +95,16 @@ class RouterApp {
         route: 'settingsEvent',
         name: 'settingsEvent',
         screen: const SettingsEvent(),
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'solicitudEvent',
+        name: 'solicitudEvent',
+        screen: const SolicitudScreenEvent(),
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'EvetForm',
+        name: 'EvetForm',
+        screen: const EvenFormScreen(),
         icon: Icons.home_outlined)
   ];
 

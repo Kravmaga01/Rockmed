@@ -1,3 +1,4 @@
+export 'package:rock_med/screens/solicitud_form_card_solitud.dart';
 export 'package:rock_med/screens/seetting_screen.dart';
 export 'package:rock_med/screens/descrition_screen.dart';
 export 'package:rock_med/screens/seetting_screen.dart';

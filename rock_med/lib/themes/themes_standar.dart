@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static const Color primary = Color.fromARGB(231, 246, 51, 116);
   static const Color second = Colors.white;
-  static const Color third = Color.fromARGB(187, 0, 0, 0);
+  static const Color third = Color.fromARGB(103, 0, 0, 0);
+  static const Color fourth = Color.fromARGB(246, 236, 24, 63);
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
       // color primario
       primaryColor: primary,
@@ -12,7 +13,10 @@ class AppTheme {
       snackBarTheme: const SnackBarThemeData(
           backgroundColor: primary, contentTextStyle: TextStyle(color: second)),
       // appBartheme
-
+      // FloatingActionbottonTeme
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: primary,
+      ),
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
       inputDecorationTheme: const InputDecorationTheme(
 
