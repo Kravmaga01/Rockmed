@@ -10,6 +10,7 @@ class SolicitudScreenEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     final eventService = Provider.of<EventService>(context);
     print(eventService.EventsService());
+
     return Scaffold(
       appBar: AppBar(),
       drawer: const SideMenu(),
