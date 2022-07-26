@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
 
-
 import '../widget/wiget.dart';
 
 // Esta clase es el login principal

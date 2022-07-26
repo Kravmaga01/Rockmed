@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 
 import 'services/banda_service.dart';
+import 'services/event_service.dart';
 import 'shere_preferences/preferences.dart';
 
 //* ejecucion del main
@@ -33,7 +34,7 @@ class AppStete extends StatelessWidget {
     return MultiProvider(
       // multiProvider para permitir diferentes provider de ser necesario
       providers: [
-        ChangeNotifierProvider(create: (_) => ProductsService())
+        ChangeNotifierProvider(create: (_) => EventService())
       ], //! verifica que la conexión a la base de datos sea correcta enviando el contexto
       child: MyApp(), // si la noticiación es correcta se corre la app
     );

@@ -59,8 +59,9 @@ class EventForm extends StatelessWidget {
     'Descripción': 'DescripCión',
     'Cover': false,
     'Fecha': 'FechaDelEvento',
-    'IdBanda': 'Idbanda',
-    'IdBar': 'IdBar'
+    'Remitente': 'Remitente', //Todo: falta
+    'Flayer': Image.network('https://via.placeholder.com/400x300/f6f6f6'),
+    'IdBanda': 'Idbanda', //Todo: falta
   };
   @override
   Widget build(BuildContext context) {
@@ -108,6 +109,13 @@ class EventForm extends StatelessWidget {
               formProperty: 'Fecha',
               formValues: formValues,
             ),
+            ConstuIpuntField(
+              labelText: 'Enviar a',
+              keyboardKey: TextInputType.datetime,
+              formProperty: 'Remitente',
+              formValues: formValues,
+            ),
+            //Todo: falta implementar el flayer .
           ],
         )),
       ),

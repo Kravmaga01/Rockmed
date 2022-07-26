@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../services/event_service.dart';
 import '../widget/wiget.dart';
 
 class SolicitudScreenEvent extends StatelessWidget {
@@ -6,6 +8,8 @@ class SolicitudScreenEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final eventService = Provider.of<EventService>(context);
+    print(eventService.EventsService());
     return Scaffold(
       appBar: AppBar(),
       drawer: const SideMenu(),

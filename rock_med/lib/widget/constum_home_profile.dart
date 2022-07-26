@@ -21,9 +21,7 @@ class Homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final funtiones = [];
     final top = coverHeight - profileHeight / 2;
-    final topMenu = coverHeight - profileHeight / 100;
     return Scaffold(
       appBar: AppBar(),
       drawer: const SideMenu(),

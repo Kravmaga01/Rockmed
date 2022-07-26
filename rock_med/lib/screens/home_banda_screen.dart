@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:rock_med/providers/User_preferemces.dart';
-
+import 'package:provider/provider.dart';
+import '../services/event_service.dart';
 import '../widget/wiget.dart';
 
 class HomeBandaScreen extends StatelessWidget {

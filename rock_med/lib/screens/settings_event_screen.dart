@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rock_med/screens/solicitud_event_screen.dart';
 import '../themes/themes.dart';
 import '../widget/wiget.dart';
 

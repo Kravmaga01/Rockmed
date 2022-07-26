@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/wiget.dart';
 
+import '../services/event_service.dart';
 import '../themes/themes_standar.dart';
 
 class WelcomeScreen extends StatelessWidget {
