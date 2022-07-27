@@ -99,7 +99,7 @@ class RouterApp {
     RoutersOption(
         route: 'solicitudEvent',
         name: 'solicitudEvent',
-        screen: const SolicitudScreenEvent(),
+        screen: SolicitudScreenEvent(),
         icon: Icons.home_outlined),
     RoutersOption(
         route: 'EvetForm',

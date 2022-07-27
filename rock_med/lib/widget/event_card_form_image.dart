@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 
 class EventFromImage extends StatelessWidget {
-  const EventFromImage({Key? key}) : super(key: key);
-
+  const EventFromImage({Key? key, this.url}) : super(key: key);
+  final String? url;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,14 +14,20 @@ class EventFromImage extends StatelessWidget {
         decoration: _buildBoxDecoretion(),
         height: 350,
         width: double.infinity,
-        child: const ClipRRect(
-          borderRadius: BorderRadius.only(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(45), topRight: Radius.circular(45)),
-          child: FadeInImage(
-            image: NetworkImage('https://via.placeholder.com/400x300/green'),
-            placeholder: AssetImage('assets/placeholder-title.gif'),
-            fit: BoxFit.cover,
-          ),
+          child: url == null
+              ? const Image(
+                  image: AssetImage('assets/no-image.jpg'),
+                  fit: BoxFit.cover,
+                )
+              : const FadeInImage(
+                  image:
+                      NetworkImage('https://via.placeholder.com/400x300/green'),
+                  placeholder: AssetImage('assets/placeholder-title.gif'),
+                  fit: BoxFit.cover,
+                ),
         ),
       ),
     );

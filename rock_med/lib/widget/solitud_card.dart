@@ -1,13 +1,23 @@
 //Todo:Cards para solicitud de evento
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rock_med/models/models.dart';
+import 'package:rock_med/services/event_service.dart';
 import 'package:rock_med/themes/themes.dart';
+import 'package:rock_med/widget/wiget.dart';
 
 //* ESTUCTURA
 class SolicitudCard extends StatelessWidget {
-  const SolicitudCard({Key? key}) : super(key: key);
+  final ModelEvent event;
+
+  int index;
+  SolicitudCard({Key? key, required this.event, required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final eventService = Provider.of<EventService>(context);
+    eventService.EventsService();
     return Padding(
       //* Este padig permitira que las cards tenga separación simetrica.
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -22,15 +32,20 @@ class SolicitudCard extends StatelessWidget {
           alignment:
               Alignment.bottomLeft, // alineación de la pila a la izquierda
           children: [
-            _BackGroundImage(), // la imagen de fondo
+            EventFromImage(url: eventService.selecFlayer!.flayer),
+            _BackGroundImage(event.flayer), // la imagen de fondo
             _EventDetails(), //Detalles del evento.
             Positioned(top: 0, right: 0, child: _PriceTeg()),
             Positioned(
                 top: 0,
                 left: 0,
                 child: GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, 'EvetForm'),
-                    child: _NotAvalieble()))
+                    onTap: () {
+                      eventService.selecFlayer =
+                          eventService.events[index].copy();
+                      Navigator.pushNamed(context, 'EvetForm');
+                    },
+                    child: _NotAvalieble())),
           ],
         ),
       ),
@@ -155,6 +170,9 @@ class _EventDetails extends StatelessWidget {
 
 //! Imagen de fondo por defecto para una card vacia
 class _BackGroundImage extends StatelessWidget {
+  final String? url;
+
+  const _BackGroundImage(this.url);
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -162,11 +180,11 @@ class _BackGroundImage extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 400,
-        child: const FadeInImage(
-            placeholder: AssetImage(
+        child: FadeInImage(
+            placeholder: const AssetImage(
                 'assets/placeholder-title.gif'), // placeholder mientras carga la imagen
-            image: NetworkImage(
-                'https://via.placeholder.com/400x300/f6f6f6'), // imagen por defecto si a card esata vacia
+            image:
+                NetworkImage(url!), // imagen por defecto si a card esata vacia
             fit: BoxFit.cover), // permite que abarque todo el espacio
       ),
     );

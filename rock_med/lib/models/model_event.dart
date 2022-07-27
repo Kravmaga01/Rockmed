@@ -38,4 +38,10 @@ class ModelEvent {
         "disponible": disponible,
         "id": id,
       };
+
+  ModelEvent copy() => ModelEvent(
+      disponible: disponible,
+      fecha: fecha,
+      remitente: remitente,
+      descripcion: descripcion);
 }

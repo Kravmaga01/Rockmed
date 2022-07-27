@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rock_med/screens/screens.dart';
 import '../services/event_service.dart';
 import '../widget/wiget.dart';
 
 class SolicitudScreenEvent extends StatelessWidget {
-  const SolicitudScreenEvent({Key? key}) : super(key: key);
-
+  SolicitudScreenEvent({Key? key}) : super(key: key);
+  int contador = 0;
   @override
   Widget build(BuildContext context) {
     final eventService = Provider.of<EventService>(context);
-    print(eventService.EventsService());
+    Future.delayed(const Duration(milliseconds: 10), () {
+      if (contador < 1) {
+        contador++;
+
+        eventService.EventsService();
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(),
       drawer: const SideMenu(),
       body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (BuildContext context, index) => const SolicitudCard()),
+          itemCount: eventService.events.length,
+          itemBuilder: (BuildContext context, index) => SolicitudCard(
+                index: index,
+                event: eventService.events[index],
+              )),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {},

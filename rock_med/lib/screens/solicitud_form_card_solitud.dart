@@ -75,7 +75,7 @@ class EventForm extends StatelessWidget {
             child: Column(
           children: [
             const SizedBox(
-              height: 10,
+              height: 50,
             ),
             ConstuIpuntField(
                 labelText: 'Nombre del evento ',
@@ -91,7 +91,7 @@ class EventForm extends StatelessWidget {
                 formProperty: 'NombreEvento',
                 formValues: formValues),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             SwitchListTile.adaptive(
                 title: const Text('cover'),
@@ -101,7 +101,7 @@ class EventForm extends StatelessWidget {
                   //Todo:Pendiente
                 }),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             ConstuIpuntField(
               labelText: 'Fecha',
@@ -109,12 +109,19 @@ class EventForm extends StatelessWidget {
               formProperty: 'Fecha',
               formValues: formValues,
             ),
+            const SizedBox(
+              height: 30,
+            ),
             ConstuIpuntField(
               labelText: 'Enviar a',
               keyboardKey: TextInputType.datetime,
               formProperty: 'Remitente',
               formValues: formValues,
             ),
+            const SizedBox(
+              height: 60,
+            ),
+
             //Todo: falta implementar el flayer .
           ],
         )),
