@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/wiget.dart';
 
+import '../services/services.dart';
+
 class EvenFormScreen extends StatelessWidget {
-  const EvenFormScreen({Key? key}) : super(key: key);
+  EvenFormScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final eventService = Provider.of<EventService>(context);
     return Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
               Stack(
                 children: [
-                  const EventFromImage(),
+                  EventFromImage(eventService.selecFlayer!.flayer),
                   Positioned(
                       top: 60,
                       left: 20,

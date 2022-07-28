@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 
 class EventFromImage extends StatelessWidget {
-  const EventFromImage({Key? key, this.url}) : super(key: key);
   final String? url;
+  EventFromImage(this.url);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,9 +23,8 @@ class EventFromImage extends StatelessWidget {
                   image: AssetImage('assets/no-image.jpg'),
                   fit: BoxFit.cover,
                 )
-              : const FadeInImage(
-                  image:
-                      NetworkImage('https://via.placeholder.com/400x300/green'),
+              : FadeInImage(
+                  image: NetworkImage(url!),
                   placeholder: AssetImage('assets/placeholder-title.gif'),
                   fit: BoxFit.cover,
                 ),

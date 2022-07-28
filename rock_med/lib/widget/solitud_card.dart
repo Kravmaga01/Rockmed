@@ -32,7 +32,7 @@ class SolicitudCard extends StatelessWidget {
           alignment:
               Alignment.bottomLeft, // alineación de la pila a la izquierda
           children: [
-            EventFromImage(url: (event.flayer != null) ? event.flayer : null),
+            EventFromImage((event.flayer != null) ? event.flayer : null),
             _BackGroundImage(event.flayer), // la imagen de fondo
             _EventDetails(
               title: event.nombre,
@@ -72,7 +72,7 @@ class _NotAvalieble extends StatelessWidget {
       decoration: const BoxDecoration(
           color: AppTheme.primary,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
+              topLeft: Radius.circular(10), bottomRight: Radius.circular(25))),
       child: const FittedBox(
         fit: BoxFit.contain,
         child: Padding(
@@ -101,14 +101,14 @@ class _PriceTeg extends StatelessWidget {
       decoration: const BoxDecoration(
           color: AppTheme.primary,
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(25), bottomLeft: Radius.circular(25))),
+              topRight: Radius.circular(10), bottomLeft: Radius.circular(25))),
       child: FittedBox(
         fit: BoxFit.contain,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
             'Cover\n $price',
-            style: TextStyle(color: AppTheme.second, fontSize: 15),
+            style: const TextStyle(color: AppTheme.second, fontSize: 15),
           ),
         ),
       ),
@@ -178,7 +178,7 @@ class _EventDetails extends StatelessWidget {
       color: AppTheme.primary,
       borderRadius: BorderRadius.only(
           // boder redondeados
-          bottomLeft: Radius.circular(30),
+          bottomLeft: Radius.circular(10),
           topRight: Radius.circular(30)));
 }
 
@@ -194,12 +194,16 @@ class _BackGroundImage extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 400,
-        child: FadeInImage(
-            placeholder: const AssetImage(
-                'assets/placeholder-title.gif'), // placeholder mientras carga la imagen
-            image:
-                NetworkImage(url!), // imagen por defecto si a card esata vacia
-            fit: BoxFit.cover), // permite que abarque todo el espacio
+        child: url == null
+            ? const Image(
+                image: AssetImage('assets/no-image.jpg'),
+                fit: BoxFit.cover,
+              )
+            : FadeInImage(
+                image: NetworkImage(url!),
+                placeholder: AssetImage('assets/placeholder-title.gif'),
+                fit: BoxFit.cover,
+              ), // permite que abarque todo el espacio
       ),
     );
   }
