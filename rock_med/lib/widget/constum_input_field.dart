@@ -11,6 +11,8 @@ class ConstuIpuntField extends StatelessWidget {
   final String formProperty;
   final Map<String, dynamic> formValues;
   final TextEditingController? controller;
+  final String? initialValue;
+
   const ConstuIpuntField(
       {Key? key,
       this.hinTexT,
@@ -22,13 +24,15 @@ class ConstuIpuntField extends StatelessWidget {
       this.obscureText = false,
       required this.formProperty,
       required this.formValues,
-      this.controller})
+      this.controller,
+      this.initialValue})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       // input
+      initialValue: initialValue,
       obscureText: obscureText,
       keyboardType: keyboardKey,
       textCapitalization: TextCapitalization.words,
