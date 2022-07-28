@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rock_med/screens/screens.dart';
 import '../services/event_service.dart';
 import '../widget/wiget.dart';
 
@@ -10,7 +9,7 @@ class SolicitudScreenEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final eventService = Provider.of<EventService>(context);
-    Future.delayed(const Duration(milliseconds: 10), () {
+    Future.delayed(const Duration(milliseconds: 1), () {
       if (contador < 1) {
         contador++;
 

@@ -12,7 +12,7 @@ class EventFromImage extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
       child: Container(
         decoration: _buildBoxDecoretion(),
-        height: 350,
+        height: 400,
         width: double.infinity,
         child: ClipRRect(
           borderRadius: const BorderRadius.only(

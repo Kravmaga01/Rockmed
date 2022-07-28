@@ -2,19 +2,23 @@ import 'dart:convert';
 
 class ModelEvent {
   ModelEvent({
-    required this.disponible,
+    required this.nombre,
+    required this.cover,
     required this.fecha,
     this.flayer,
     required this.remitente,
     required this.descripcion,
+    this.coverValor,
     this.id,
   });
-  bool disponible;
+  String nombre;
+  bool cover;
   String fecha;
   String? flayer;
   String remitente;
   String descripcion;
   String? id;
+  double? coverValor;
 
   factory ModelEvent.fromJson(String str) =>
       ModelEvent.fromMap(json.decode(str));
@@ -26,8 +30,10 @@ class ModelEvent {
         flayer: json["flayer"],
         remitente: json["remitente"],
         descripcion: json["descripcion"],
-        disponible: json["disponible"],
+        cover: json["disponible"],
         id: json["id"],
+        nombre: json["nombre"],
+        coverValor: json["coverValor"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -35,13 +41,17 @@ class ModelEvent {
         "flayer": flayer,
         "remitente": remitente,
         "descripcion": descripcion,
-        "disponible": disponible,
+        "disponible": cover,
         "id": id,
+        "coverValor": coverValor,
+        "nombre": nombre,
       };
 
   ModelEvent copy() => ModelEvent(
-      disponible: disponible,
+      cover: cover,
+      coverValor: coverValor,
       fecha: fecha,
       remitente: remitente,
-      descripcion: descripcion);
+      descripcion: descripcion,
+      nombre: nombre);
 }

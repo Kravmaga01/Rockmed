@@ -17,7 +17,7 @@ class SolicitudCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final eventService = Provider.of<EventService>(context);
-    eventService.EventsService();
+
     return Padding(
       //* Este padig permitira que las cards tenga separación simetrica.
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -32,10 +32,16 @@ class SolicitudCard extends StatelessWidget {
           alignment:
               Alignment.bottomLeft, // alineación de la pila a la izquierda
           children: [
-            EventFromImage(url: eventService.selecFlayer!.flayer),
+            EventFromImage(url: (event.flayer != null) ? event.flayer : null),
             _BackGroundImage(event.flayer), // la imagen de fondo
-            _EventDetails(), //Detalles del evento.
-            Positioned(top: 0, right: 0, child: _PriceTeg()),
+            _EventDetails(
+              title: event.nombre,
+              contenido: event.descripcion,
+            ),
+            //Detalles del evento.
+            if (event.cover)
+              Positioned(top: 0, right: 0, child: _PriceTeg(event.coverValor)),
+
             Positioned(
                 top: 0,
                 left: 0,
@@ -83,6 +89,10 @@ class _NotAvalieble extends StatelessWidget {
 
 //*priceteg
 class _PriceTeg extends StatelessWidget {
+  final double? price;
+
+  const _PriceTeg(this.price);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -92,13 +102,13 @@ class _PriceTeg extends StatelessWidget {
           color: AppTheme.primary,
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(25), bottomLeft: Radius.circular(25))),
-      child: const FittedBox(
+      child: FittedBox(
         fit: BoxFit.contain,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
-            '\$1003.999',
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            'Cover\n $price',
+            style: TextStyle(color: AppTheme.second, fontSize: 15),
           ),
         ),
       ),
@@ -121,6 +131,10 @@ BoxDecoration _cardsBorders() => BoxDecoration(
 
 //* _EvenDetails
 class _EventDetails extends StatelessWidget {
+  final String? title;
+  final String? contenido;
+
+  const _EventDetails({required this.title, required this.contenido});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -135,19 +149,19 @@ class _EventDetails extends StatelessWidget {
           // linia el contenido en columna
           crossAxisAlignment:
               CrossAxisAlignment.start, //* a linia los elemoentos al inicio
-          children: const [
+          children: [
             //! aqui van los valores
             // titulo
             Text(
-              'Discoduro G',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              title!,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               maxLines: 1,
               overflow: TextOverflow.ellipsis, //* permite que no se desborde
             ),
             //descripción
             Text(
-              'Aquií debe ir la descripción del evento',
-              style: TextStyle(
+              contenido!,
+              style: const TextStyle(
                 fontSize: 15,
                 color: Colors.white,
               ),
@@ -164,8 +178,8 @@ class _EventDetails extends StatelessWidget {
       color: AppTheme.primary,
       borderRadius: BorderRadius.only(
           // boder redondeados
-          bottomLeft: Radius.circular(25),
-          topRight: Radius.circular(25)));
+          bottomLeft: Radius.circular(30),
+          topRight: Radius.circular(30)));
 }
 
 //! Imagen de fondo por defecto para una card vacia
