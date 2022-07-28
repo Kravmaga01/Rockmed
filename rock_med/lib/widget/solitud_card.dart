@@ -47,7 +47,7 @@ class SolicitudCard extends StatelessWidget {
                 left: 0,
                 child: GestureDetector(
                     onTap: () {
-                      eventService.selecFlayer =
+                      eventService.selecEvent =
                           eventService.events[index].copy();
                       Navigator.pushNamed(context, 'EvetForm');
                     },

@@ -11,7 +11,7 @@ class EventService extends ChangeNotifier {
   final String _baseUrl =
       'rockmeddatabase-default-rtdb.firebaseio.com'; // urle de base de datos
   final List<ModelEvent> events = []; // objeto en el que se almacenaran
-  ModelEvent? selecFlayer;
+  ModelEvent? selecEvent;
   bool isLoading = true; // se pregunta si esta cargando
 
   EventsService() async {

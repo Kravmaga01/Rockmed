@@ -17,7 +17,7 @@ class EvenFormScreen extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  EventFromImage(eventService.selecFlayer!.flayer),
+                  EventFromImage(eventService.selecEvent!.flayer),
                   Positioned(
                       top: 60,
                       left: 20,

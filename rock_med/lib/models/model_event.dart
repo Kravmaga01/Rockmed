@@ -48,10 +48,13 @@ class ModelEvent {
       };
 
   ModelEvent copy() => ModelEvent(
-      cover: cover,
-      coverValor: coverValor,
-      fecha: fecha,
-      remitente: remitente,
-      descripcion: descripcion,
-      nombre: nombre);
+        cover: cover,
+        coverValor: coverValor,
+        fecha: fecha,
+        remitente: remitente,
+        descripcion: descripcion,
+        nombre: nombre,
+        flayer: flayer,
+        id: id,
+      );
 }

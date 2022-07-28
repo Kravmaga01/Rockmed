@@ -5,7 +5,7 @@ import 'package:rock_med/themes/themes.dart';
 
 class EventFromImage extends StatelessWidget {
   final String? url;
-  EventFromImage(this.url);
+  const EventFromImage(this.url);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,8 @@ class EventFromImage extends StatelessWidget {
                   fit: BoxFit.cover,
                 )
               : FadeInImage(
-                  image: NetworkImage(url!),
-                  placeholder: AssetImage('assets/placeholder-title.gif'),
+                  image: NetworkImage(this.url!),
+                  placeholder: const AssetImage('assets/placeholder-title.gif'),
                   fit: BoxFit.cover,
                 ),
         ),
