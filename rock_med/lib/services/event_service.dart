@@ -42,7 +42,7 @@ class EventService extends ChangeNotifier {
     notifyListeners();
     if (event!.id == null) {
       //Esnecesario crear
-      print('${event.id}');
+      await createEvent(event);
     } else {
       // Actualizar
 
@@ -59,6 +59,16 @@ class EventService extends ChangeNotifier {
     final decodeData = resp.body;
     final index = events.indexWhere((element) => element.id == event.id);
     events[index] = event;
+    return event.id!;
+  }
+
+  Future<String> createEvent(ModelEvent event) async {
+    final url = Uri.https(_baseUrl, 'evento.json');
+    final resp = await http.post(url, body: event.toJson());
+    final decodeData = json.decode(resp.body);
+    event.id = decodeData['name'];
+    print(decodeData);
+    events.add(event);
     return event.id!;
   }
 }

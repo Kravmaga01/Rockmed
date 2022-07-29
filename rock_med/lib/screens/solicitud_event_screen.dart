@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rock_med/models/models.dart';
 import '../services/event_service.dart';
 import '../widget/wiget.dart';
 
@@ -28,7 +29,17 @@ class SolicitudScreenEvent extends StatelessWidget {
               )),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          eventService.selecEvent = ModelEvent(
+            nombre: '',
+            cover: false,
+            fecha: '',
+            remitente: '',
+            descripcion: '',
+            coverValor: 0,
+          );
+          Navigator.pushNamed(context, 'EvetForm');
+        },
       ),
     );
   }

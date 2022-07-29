@@ -1,4 +1,4 @@
-import 'package:rock_med/models/routers.dart';
+import 'package:rock_med/models/model_routers.dart';
 import 'package:rock_med/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/screens/solicitud_event_screen.dart';

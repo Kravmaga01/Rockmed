@@ -71,6 +71,7 @@ class _EventFromScreenBody extends StatelessWidget {
             onPressed: () async {
               if (!eventForm.isValidFrom()) return;
               await eventService.seveOrCreateEvent(eventForm.event);
+              Navigator.pop(context);
             },
             child: const Icon(Icons.save_outlined)));
   }

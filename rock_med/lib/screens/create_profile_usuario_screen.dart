@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:rock_med/providers/usario_servide.dart';
-import 'package:rock_med/providers/utils.dart';
+import 'package:rock_med/providers/usario_servide_provider.dart';
+import 'package:rock_med/providers/provider_utils.dart';
 
 import '../main.dart';
 import '../themes/themes.dart';
-import '../widget/constum_input_field.dart';
+import '../widget/constum_input_field_wiget.dart';
 
 class CreateProfileUsuarioScreen extends StatefulWidget {
   const CreateProfileUsuarioScreen({Key? key}) : super(key: key);
