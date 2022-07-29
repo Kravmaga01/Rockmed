@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -63,6 +64,12 @@ class _EventFromScreenBody extends StatelessWidget {
               const SizedBox(
                 height: 100,
               ),
+              TextButton(
+                  onPressed: () async {
+                    await eventService.deleteEvent(eventForm.event);
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Eliminar Evento'))
             ],
           ),
         ),
@@ -118,7 +125,7 @@ class EventForm extends StatelessWidget {
                       return 'la descripción es obligatoria';
                     }
                   },
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   decoration: const InputDecoration(
                       labelText: 'Descripción del evento '),
                 ),
@@ -165,7 +172,7 @@ class EventForm extends StatelessWidget {
                       return 'la fecha obligatoria';
                     }
                   },
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.datetime,
                   decoration:
                       const InputDecoration(labelText: 'Fecha del evento'),
                 ),
@@ -180,7 +187,7 @@ class EventForm extends StatelessWidget {
                       return 'El remitente es obligatorio';
                     }
                   },
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   decoration: const InputDecoration(labelText: 'Remitente'),
                 ),
                 const SizedBox(

@@ -1,5 +1,6 @@
 //Todo: servicio  para eventos
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import '../models/models.dart';
@@ -13,7 +14,7 @@ class EventService extends ChangeNotifier {
   ModelEvent? selecEvent;
   bool isLoading = true;
   bool isSaving = false; // se pregunta si esta cargando
-
+  bool isDelete = false;
   EventsService() async {
     // se  inicializa la carga de los eventos
     await loadEvent();
@@ -35,6 +36,15 @@ class EventService extends ChangeNotifier {
     });
 
     return events;
+  }
+
+  Future deleteEvent(ModelEvent? event) async {
+    isDelete = true;
+    notifyListeners();
+    await _deleteEvent(event!);
+
+    isDelete = false;
+    notifyListeners();
   }
 
   Future seveOrCreateEvent(ModelEvent? event) async {
@@ -70,5 +80,13 @@ class EventService extends ChangeNotifier {
     print(decodeData);
     events.add(event);
     return event.id!;
+  }
+
+  Future _deleteEvent(ModelEvent event) async {
+    final url = Uri.https(_baseUrl, 'evento/${event.id}.json');
+    final resp = await http.delete(url, body: event.toJson());
+    final decodeData = resp.body;
+    events.remove(event);
+    notifyListeners();
   }
 }

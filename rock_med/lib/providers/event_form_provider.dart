@@ -9,14 +9,11 @@ class EventFromProvider extends ChangeNotifier {
   EventFromProvider(this.event);
 
   updateAvailability(bool value) {
-    print(value);
     event!.cover = value;
     notifyListeners();
   }
 
   bool isValidFrom() {
-    print(event!.coverValor);
-    print(formkey.currentState?.validate());
     return formkey.currentState?.validate() ?? false;
   }
 }
