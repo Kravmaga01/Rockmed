@@ -1,4 +1,4 @@
-import 'package:rock_med/models/user.dart';
+import 'package:rock_med/models/model_user.dart' show User;
 
 class UserPreferences {
   static User myUser = User(

@@ -2,7 +2,6 @@
 import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:rock_med/screens/screens.dart';
 import '../models/models.dart';
 
 //* conexion a realdatabase.
@@ -12,7 +11,8 @@ class EventService extends ChangeNotifier {
       'rockmeddatabase-default-rtdb.firebaseio.com'; // urle de base de datos
   final List<ModelEvent> events = []; // objeto en el que se almacenaran
   ModelEvent? selecEvent;
-  bool isLoading = true; // se pregunta si esta cargando
+  bool isLoading = true;
+  bool isSaving = false; // se pregunta si esta cargando
 
   EventsService() async {
     // se  inicializa la carga de los eventos
@@ -35,5 +35,30 @@ class EventService extends ChangeNotifier {
     });
 
     return events;
+  }
+
+  Future seveOrCreateEvent(ModelEvent? event) async {
+    isSaving = true;
+    notifyListeners();
+    if (event!.id == null) {
+      //Esnecesario crear
+      print('${event.id}');
+    } else {
+      // Actualizar
+
+      await updateEvent(event);
+    }
+
+    isSaving = false;
+    notifyListeners();
+  }
+
+  Future<String> updateEvent(ModelEvent event) async {
+    final url = Uri.https(_baseUrl, 'evento/${event.id}.json');
+    final resp = await http.put(url, body: event.toJson());
+    final decodeData = resp.body;
+    final index = events.indexWhere((element) => element.id == event.id);
+    events[index] = event;
+    return event.id!;
   }
 }

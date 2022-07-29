@@ -15,6 +15,8 @@ class EventFromProvider extends ChangeNotifier {
   }
 
   bool isValidFrom() {
+    print(event!.coverValor);
+    print(formkey.currentState?.validate());
     return formkey.currentState?.validate() ?? false;
   }
 }

@@ -12,13 +12,15 @@ class ConstuIpuntField extends StatelessWidget {
   final Map<String, dynamic> formValues;
   final TextEditingController? controller;
   final String? initialValue;
+  Function(String)? onChanged;
 
-  const ConstuIpuntField(
+  ConstuIpuntField(
       {Key? key,
       this.hinTexT,
       this.labelText,
       this.helperText,
       this.icon,
+      this.onChanged,
       this.suffixIcon,
       this.keyboardKey,
       this.obscureText = false,
