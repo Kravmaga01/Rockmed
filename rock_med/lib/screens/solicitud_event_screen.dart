@@ -14,7 +14,7 @@ class SolicitudScreenEvent extends StatelessWidget {
       if (contador < 1) {
         contador++;
 
-        eventService.EventsService();
+        eventService.eventsService();
       }
     });
 

@@ -15,9 +15,12 @@ class EventService extends ChangeNotifier {
   bool isLoading = true;
   bool isSaving = false; // se pregunta si esta cargando
   bool isDelete = false;
-  EventsService() async {
+
+  eventsService() async {
     // se  inicializa la carga de los eventos
+
     await loadEvent();
+    notifyListeners();
   }
 
   Future<List<ModelEvent>> loadEvent() async {
@@ -32,7 +35,7 @@ class EventService extends ChangeNotifier {
       final tempEven = ModelEvent.fromMap(value);
       tempEven.id = key;
       events.add(tempEven);
-      print(events); // se guardan los valores en el objeto vacio
+      // se guardan los valores en el objeto vacio
     });
 
     return events;
@@ -77,7 +80,6 @@ class EventService extends ChangeNotifier {
     final resp = await http.post(url, body: event.toJson());
     final decodeData = json.decode(resp.body);
     event.id = decodeData['name'];
-    print(decodeData);
     events.add(event);
     return event.id!;
   }
@@ -87,6 +89,5 @@ class EventService extends ChangeNotifier {
     final resp = await http.delete(url, body: event.toJson());
     final decodeData = resp.body;
     events.remove(event);
-    notifyListeners();
   }
 }

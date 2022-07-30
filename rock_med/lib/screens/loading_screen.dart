@@ -10,7 +10,7 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final eventService = Provider.of<EventService>(context);
-    eventService.EventsService();
+    eventService.eventsService();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Eventos'),
