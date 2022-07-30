@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/wiget.dart';
-
+import 'package:image_picker/image_picker.dart';
 import '../services/services.dart';
 
 class EvenFormScreen extends StatelessWidget {
@@ -51,8 +51,18 @@ class _EventFromScreenBody extends StatelessWidget {
                       top: 60,
                       right: 20,
                       child: IconButton(
-                          onPressed: () {
-                            //TODo: falta
+                          onPressed: () async {
+                            final picker = ImagePicker();
+                            final XFile? pickedFile = await picker.pickImage(
+                              source: ImageSource.gallery,
+                              imageQuality: 100,
+                            );
+                            if (pickedFile == null) {
+                              print('No selecciono nada');
+                              return;
+                            }
+
+                            print('tenemos imagen${pickedFile.path}');
                           },
                           icon: const Icon(
                             Icons.camera_alt_outlined,
