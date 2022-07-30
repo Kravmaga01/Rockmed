@@ -37,7 +37,7 @@ class _EventFromScreenBody extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  EventFromImage(eventService.selecEvent!.flayer),
+                  EventFromImage(eventService.selecEvent.flayer),
                   Positioned(
                       top: 60,
                       left: 20,
@@ -63,6 +63,8 @@ class _EventFromScreenBody extends StatelessWidget {
                             }
 
                             print('tenemos imagen${pickedFile.path}');
+                            eventService
+                                .updateSelecedProductImage(pickedFile.path);
                           },
                           icon: const Icon(
                             Icons.camera_alt_outlined,
