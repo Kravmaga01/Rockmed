@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/wiget.dart';
@@ -51,8 +51,14 @@ class _EventFromScreenBody extends StatelessWidget {
                       top: 60,
                       right: 20,
                       child: IconButton(
-                          onPressed: () {
-                            //TODo: falta
+                          onPressed: () async {
+                            final picker = new ImagePicker();
+                            final PickedFile? pickedFile = await picker
+                                .getImage(source: ImageSource.camera);
+                            if (pickedFile == null) {
+                              print('Imagen no selecionada');
+                            }
+                            print('Tenemos Imagen ${pickedFile!.path}');
                           },
                           icon: const Icon(
                             Icons.camera_alt_outlined,
