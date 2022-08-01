@@ -59,6 +59,9 @@ class _EventFromScreenBody extends StatelessWidget {
                               print('Imagen no selecionada');
                             }
                             print('Tenemos Imagen ${pickedFile!.path}');
+
+                            eventService
+                                .updateSelectedEventImage(pickedFile.path);
                           },
                           icon: const Icon(
                             Icons.camera_alt_outlined,

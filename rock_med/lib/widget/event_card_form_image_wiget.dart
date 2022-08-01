@@ -1,5 +1,7 @@
 //Todo: Imagen del fromulario de eventos
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 
@@ -18,16 +20,7 @@ class EventFromImage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(45), topRight: Radius.circular(45)),
-          child: url == null
-              ? const Image(
-                  image: AssetImage('assets/no-image.jpg'),
-                  fit: BoxFit.cover,
-                )
-              : FadeInImage(
-                  image: NetworkImage(this.url!),
-                  placeholder: const AssetImage('assets/placeholder-title.gif'),
-                  fit: BoxFit.cover,
-                ),
+          child: getFlayer(url),
         ),
       ),
     );
@@ -41,4 +34,24 @@ class EventFromImage extends StatelessWidget {
             BoxShadow(
                 color: AppTheme.third, blurRadius: 10, offset: Offset(0, 5))
           ]);
+
+  Widget getFlayer(String? picture) {
+    if (picture == null) {
+      return const Image(
+        image: AssetImage('assets/no-image.jpg'),
+        fit: BoxFit.cover,
+      );
+    } else if (picture.startsWith('http')) {
+      return FadeInImage(
+        image: NetworkImage(url!),
+        placeholder: const AssetImage('assets/placeholder-title.gif'),
+        fit: BoxFit.cover,
+      );
+    } else {
+      return Image.file(
+        File(picture),
+        fit: BoxFit.cover,
+      );
+    }
+  }
 }

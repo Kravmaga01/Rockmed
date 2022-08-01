@@ -1,5 +1,6 @@
 //Todo: servicio  para eventos
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -15,7 +16,7 @@ class EventService extends ChangeNotifier {
   bool isLoading = true;
   bool isSaving = false; // se pregunta si esta cargando
   bool isDelete = false;
-
+  File? newPictureFile;
   eventsService() async {
     // se  inicializa la carga de los eventos
 
@@ -89,5 +90,12 @@ class EventService extends ChangeNotifier {
     final resp = await http.delete(url, body: event.toJson());
     final decodeData = resp.body;
     events.remove(event);
+  }
+
+  void updateSelectedEventImage(String path) {
+    this.selecEvent!.flayer = path;
+    this.newPictureFile = File.fromUri(Uri(path: path));
+
+    notifyListeners();
   }
 }
