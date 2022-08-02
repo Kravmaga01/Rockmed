@@ -52,9 +52,9 @@ class _EventFromScreenBody extends StatelessWidget {
                       right: 20,
                       child: IconButton(
                           onPressed: () async {
-                            final picker = new ImagePicker();
-                            final PickedFile? pickedFile = await picker
-                                .getImage(source: ImageSource.camera);
+                            final picker = ImagePicker();
+                            final XFile? pickedFile = await picker.pickImage(
+                                source: ImageSource.gallery);
                             if (pickedFile == null) {
                               print('Imagen no selecionada');
                             }
@@ -74,22 +74,32 @@ class _EventFromScreenBody extends StatelessWidget {
                 height: 100,
               ),
               TextButton(
-                  onPressed: () async {
-                    await eventService.deleteEvent(eventForm.event);
-                    Navigator.pop(context);
-                  },
+                  onPressed: eventService.isSaving
+                      ? null
+                      : () async {
+                          await eventService.deleteEvent(eventForm.event);
+                          Navigator.popAndPushNamed(context, 'solicitudEvent');
+                        },
                   child: const Text('Eliminar Evento'))
             ],
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-              if (!eventForm.isValidFrom()) return;
-              await eventService.seveOrCreateEvent(eventForm.event);
-              Navigator.pop(context);
-            },
-            child: const Icon(Icons.save_outlined)));
+            onPressed: eventService.isSaving
+                ? null
+                : () async {
+                    if (!eventForm.isValidFrom()) return;
+                    final String? imageUrl = await eventService.uploadImage();
+                    if (imageUrl != null) eventForm.event!.flayer = imageUrl;
+                    await eventService.seveOrCreateEvent(eventForm.event);
+                    Navigator.pop(context);
+                  },
+            child: eventService.isSaving
+                ? const CircularProgressIndicator(
+                    color: AppTheme.second,
+                  )
+                : const Icon(Icons.save_outlined)));
   }
 }
 
