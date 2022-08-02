@@ -1,5 +1,5 @@
-import 'package:rock_med/models/model_user.dart' show User;
+import 'package:rock_med/models/model_user.dart' show UserPrefrence;
 
 class UserPreferences {
-  static User myUser = User('', '', '', '', '');
+  static late UserPrefrence myUser;
 }
