@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rock_med/models/model_user.dart';
+import 'package:rock_med/services/services.dart';
 
 class ConstuIpuntField extends StatelessWidget {
   final String? hinTexT;
@@ -40,7 +42,15 @@ class ConstuIpuntField extends StatelessWidget {
       textCapitalization: TextCapitalization.words,
       autofocus: true,
       controller: controller,
-      onChanged: (value) => formValues[formProperty] = value,
+      onChanged: (value) {
+        UserPreferences.myUser = User(
+            'https://images.pexels.com/photos/925743/pexels-photo-925743.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
+            formValues['Nombre'],
+            formValues['Correo'],
+            '');
+        formValues[formProperty] = value;
+      },
       validator: (value) {
         if (value == null) return 'Este campor es requerido';
         return value.isEmpty ? 'los campos son requeridos' : null;

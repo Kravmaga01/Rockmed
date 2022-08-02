@@ -42,9 +42,8 @@ class EventService extends ChangeNotifier {
   }
 
   Future deleteEvent(ModelEvent? event) async {
-    isSaving = true;
-    notifyListeners();
     await _deleteEvent(event!);
+    notifyListeners();
   }
 
   Future seveOrCreateEvent(ModelEvent? event) async {
@@ -85,8 +84,10 @@ class EventService extends ChangeNotifier {
     final url = Uri.https(_baseUrl, 'evento/${event.id}.json');
     final resp = await http.delete(url, body: event.toJson());
     final decodeData = resp.body;
+    print(resp);
     events.remove(event);
     notifyListeners();
+    return events;
   }
 
   void updateSelectedEventImage(String path) {
@@ -118,4 +119,6 @@ class EventService extends ChangeNotifier {
 
     return decodeData['secure_url'];
   }
+
+  Future refreshEvent() async {}
 }

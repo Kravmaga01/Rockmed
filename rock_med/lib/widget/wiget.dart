@@ -1,4 +1,5 @@
 // aquí se exportan todos los wigets personalizados S
+export 'package:rock_med/widget/event_card_form.dart';
 export 'package:rock_med/providers/login_form_proviader.dart';
 export 'package:rock_med/widget/constum_drawer_wiget.dart';
 export 'package:rock_med/widget/constum_drawer_wiget.dart';
