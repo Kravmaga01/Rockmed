@@ -43,7 +43,7 @@ class ConstuIpuntField extends StatelessWidget {
       autofocus: true,
       controller: controller,
       onChanged: (value) {
-        UserPreferences.myUser = UserPrefrence(
+        UserPreferences.myUser = ModelUser(
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s',
             'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
             formValues['Nombre'],

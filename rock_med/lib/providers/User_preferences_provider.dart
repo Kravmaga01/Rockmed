@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:rock_med/models/model_user.dart' show UserPrefrence;
+import 'package:rock_med/models/model_user.dart';
 
 class UserPreferences {
-  static UserPrefrence myUser = UserPrefrence(
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s',
-      'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
-      'name',
+  static ModelUser myUser = ModelUser(
+      'https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg',
+      'https://i.blogs.es/66b2a4/photo-1511367461989-f85a21fda167/1366_2000.jpeg',
+      'Edward alexander',
       '',
-      'Hola!!! aqui podras contranos mas sobre ti y tus gustos');
+      'Lorem30');
 }

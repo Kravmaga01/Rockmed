@@ -105,6 +105,11 @@ class RouterApp {
         route: 'EvetForm',
         name: 'EvetForm',
         screen: EvenFormScreen(),
+        icon: Icons.home_outlined),
+    RoutersOption(
+        route: 'editProfile',
+        name: 'editProfile',
+        screen: const EditProfileScreen(),
         icon: Icons.home_outlined)
   ];
 

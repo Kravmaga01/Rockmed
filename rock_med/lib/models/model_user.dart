@@ -1,10 +1,10 @@
-class UserPrefrence {
+class ModelUser {
   final String coverImagPath;
   final String imagePath;
   final String name;
   final String email;
   final String about;
 
-  UserPrefrence(
+  ModelUser(
       this.coverImagPath, this.imagePath, this.name, this.email, this.about);
 }

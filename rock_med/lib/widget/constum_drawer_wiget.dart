@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rock_med/services/services.dart';
 import 'package:rock_med/themes/themes.dart';
 
 class SideMenu extends StatelessWidget {
@@ -10,7 +12,7 @@ class SideMenu extends StatelessWidget {
         child: ListView(
       padding: EdgeInsets.zero,
       children: [
-        _DrawerHeader(),
+        const _DrawerHeader(),
         ListTile(
           leading: const Icon(Icons.photo_outlined),
           title: const Text(
@@ -57,6 +59,12 @@ class SideMenu extends StatelessWidget {
             Navigator.popAndPushNamed(context, 'settings');
           },
         ),
+        ListTile(
+            leading: const Icon(Icons.arrow_back, size: 32),
+            title: const Text(
+              'Sign Out',
+            ),
+            onTap: () => FirebaseAuth.instance.signOut()),
       ],
     ));
   }
@@ -70,9 +78,10 @@ class _DrawerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DrawerHeader(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/drawer.jpeg'), fit: BoxFit.cover)),
+              image: NetworkImage(UserPreferences.myUser.coverImagPath),
+              fit: BoxFit.cover)),
       child: Container(),
     );
   }
