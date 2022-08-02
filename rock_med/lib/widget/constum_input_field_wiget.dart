@@ -48,7 +48,8 @@ class ConstuIpuntField extends StatelessWidget {
             'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
             formValues['Nombre'],
             formValues['Correo'],
-            '');
+            '',
+            false);
         formValues[formProperty] = value;
       },
       validator: (value) {

@@ -5,12 +5,14 @@ class ProfileWidget extends StatelessWidget {
   final String coverImagPath;
   final String imagePath;
   final VoidCallback onClicked;
+  final bool isEdit;
 
   const ProfileWidget(
       {Key? key,
       required this.imagePath,
       required this.onClicked,
-      required this.coverImagPath})
+      required this.coverImagPath,
+      required this.isEdit})
       : super(key: key);
   final double coverHeight = 280;
   @override

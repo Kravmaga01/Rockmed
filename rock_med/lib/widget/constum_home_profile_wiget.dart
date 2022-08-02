@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/app_bar_chance_theme.dart';
@@ -38,9 +37,11 @@ class Homescreen extends StatelessWidget {
                   top: top,
                   child: Row(children: [
                     ProfileWidget(
-                        imagePath: userPrefece.imagePath,
-                        onClicked: onClicked,
-                        coverImagPath: userPrefece.coverImagPath),
+                      imagePath: userPrefece.imagePath,
+                      onClicked: onClicked,
+                      coverImagPath: userPrefece.coverImagPath,
+                      isEdit: userPrefece.isDark,
+                    ),
                     Padding(
                         padding: const EdgeInsets.only(left: 40),
                         child: buildName(userPrefece)),
@@ -71,7 +72,7 @@ class Homescreen extends StatelessWidget {
               fontSize: 24,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text('${user.email}'),
         ],
       );
