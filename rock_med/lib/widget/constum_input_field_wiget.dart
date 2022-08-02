@@ -44,7 +44,7 @@ class ConstuIpuntField extends StatelessWidget {
       controller: controller,
       onChanged: (value) {
         UserPreferences.myUser = UserPrefrence(
-            'https://images.pexels.com/photos/925743/pexels-photo-925743.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s',
             'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
             formValues['Nombre'],
             formValues['Correo'],

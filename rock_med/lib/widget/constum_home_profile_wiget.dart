@@ -63,6 +63,7 @@ class Homescreen extends StatelessWidget {
                 ),
               ],
             ),
+            buildAbout(userPrefece),
           ],
         ),
       ]),
@@ -103,8 +104,13 @@ class Homescreen extends StatelessWidget {
         children: [
           Text(
             userPrefece.name,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
           ),
+          SizedBox(height: 10),
+          Text('${user.email}'),
         ],
       );
 
@@ -122,6 +128,29 @@ class Homescreen extends StatelessWidget {
           ),
         ));
   }
+
+  Widget buildAbout(userPreference) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 48),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const Text(
+              'AboutMe',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              userPrefece.about,
+              style: const TextStyle(fontSize: 16, height: 1.4),
+            )
+          ],
+        ),
+      );
 }
 
 class EventScreen extends StatelessWidget {
