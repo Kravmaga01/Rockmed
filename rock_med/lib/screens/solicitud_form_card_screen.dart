@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
+import 'package:flutter/services.dart';
+>>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/wiget.dart';
-
+import 'package:image_picker/image_picker.dart';
 import '../services/services.dart';
 
 class EvenFormScreen extends StatelessWidget {
@@ -36,7 +40,7 @@ class _EventFromScreenBody extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  EventFromImage(eventService.selecEvent!.flayer),
+                  EventFromImage(eventService.selecEvent.flayer),
                   Positioned(
                       top: 60,
                       left: 20,
@@ -53,6 +57,7 @@ class _EventFromScreenBody extends StatelessWidget {
                           onPressed: () async {
                             final picker = ImagePicker();
                             final XFile? pickedFile = await picker.pickImage(
+<<<<<<< HEAD
                                 source: ImageSource.gallery);
                             if (pickedFile == null) {
                               print('Imagen no selecionada');
@@ -61,6 +66,19 @@ class _EventFromScreenBody extends StatelessWidget {
 
                             eventService
                                 .updateSelectedEventImage(pickedFile.path);
+=======
+                              source: ImageSource.gallery,
+                              imageQuality: 100,
+                            );
+                            if (pickedFile == null) {
+                              print('No selecciono nada');
+                              return;
+                            }
+
+                            print('tenemos imagen${pickedFile.path}');
+                            eventService
+                                .updateSelecedProductImage(pickedFile.path);
+>>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
                           },
                           icon: const Icon(
                             Icons.camera_alt_outlined,
