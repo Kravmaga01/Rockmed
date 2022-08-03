@@ -7,5 +7,5 @@ class UserPreferences {
       'Edward alexander',
       '',
       'Lorem30',
-      false);
+      true);
 }

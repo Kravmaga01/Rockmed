@@ -4,13 +4,13 @@ import 'package:rock_med/themes/themes.dart';
 class ProfileWidget extends StatelessWidget {
   final String coverImagPath;
   final String imagePath;
-  final VoidCallback onClicked;
+  final VoidCallback? onClicked;
   final bool isEdit;
 
   const ProfileWidget(
       {Key? key,
       required this.imagePath,
-      required this.onClicked,
+      this.onClicked,
       required this.coverImagPath,
       required this.isEdit})
       : super(key: key);
@@ -53,8 +53,8 @@ class ProfileWidget extends StatelessWidget {
         child: buildCircle(
           color: AppTheme.primary,
           all: 8,
-          child: const Icon(
-            Icons.edit,
+          child: Icon(
+            isEdit ? Icons.add_a_photo : Icons.edit,
             color: AppTheme.second,
             size: 20,
           ),

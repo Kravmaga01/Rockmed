@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
-import 'package:rock_med/widget/app_bar_chance_theme.dart';
+import 'package:rock_med/widget/app_bar_change_theme.dart';
 import 'package:rock_med/widget/constume_top_profile_wiget.dart';
 import 'package:rock_med/widget/wiget.dart';
 import '../providers/providers.dart';
+import '../screens/screens.dart';
 
 class Homescreen extends StatelessWidget {
   Homescreen({
@@ -38,9 +39,11 @@ class Homescreen extends StatelessWidget {
                   child: Row(children: [
                     ProfileWidget(
                       imagePath: userPrefece.imagePath,
-                      onClicked: onClicked,
+                      onClicked: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const EditProfileScreen())),
                       coverImagPath: userPrefece.coverImagPath,
-                      isEdit: userPrefece.isDark,
+                      isEdit: false,
                     ),
                     Padding(
                         padding: const EdgeInsets.only(left: 40),

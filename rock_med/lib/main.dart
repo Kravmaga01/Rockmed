@@ -46,7 +46,7 @@ final navigatorKey =
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-
+  final user = UserPreferences.myUser;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,7 +59,9 @@ class MyApp extends StatelessWidget {
       routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
       onGenerateRoute:
           RouterApp.onGenerateRoute, // genera las rutas exitentes para el uso
-      theme: AppTheme.darkTheme, // temas principal.
+      theme: user.isDark
+          ? AppTheme.darkTheme
+          : AppTheme.lightTheme, // temas principal.
     );
   }
 }
