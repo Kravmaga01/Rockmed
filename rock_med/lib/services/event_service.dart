@@ -1,6 +1,10 @@
 //Todo: servicio  para eventos
 import 'dart:convert';
 import 'dart:io';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -13,10 +17,17 @@ class EventService extends ChangeNotifier {
       'rockmeddatabase-default-rtdb.firebaseio.com'; // urle de base de datos
   final List<ModelEvent> events = []; // objeto en el que se almacenaran
   ModelEvent? selecEvent;
+  late ModelEvent selecEvent;
   bool isLoading = true;
   bool isSaving = false; // se pregunta si esta cargando
   bool isDelete = false;
+<<<<<<< HEAD
   File? newPictureFile;
+=======
+  late ModelEvent selectedProduct;
+  File? newPrictureFile;
+
+>>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
   eventsService() async {
     // se  inicializa la carga de los eventos
     await loadEvent();
@@ -90,6 +101,7 @@ class EventService extends ChangeNotifier {
     return events;
   }
 
+<<<<<<< HEAD
   void updateSelectedEventImage(String path) {
     this.selecEvent!.flayer = path;
     this.newPictureFile = File.fromUri(Uri(path: path));
@@ -121,4 +133,11 @@ class EventService extends ChangeNotifier {
   }
 
   Future refreshEvent() async {}
+=======
+  void updateSelecedProductImage(String path) {
+    this.selecEvent.flayer = path;
+    this.newPrictureFile = File.fromUri(Uri(path: path));
+    notifyListeners();
+  }
+>>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
 }
