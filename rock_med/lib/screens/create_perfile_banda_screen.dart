@@ -99,6 +99,12 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
           const Text('Crea tu perfil banda',
               style: AppThemeText.styleTitle, textAlign: TextAlign.center),
           const SizedBox(height: 30),
+          const Text(
+              'Hey banda! Vamos a crear tu perfil, ayúdanos con los siguientes datos',
+              style: TextStyle(fontSize: 20),
+              textAlign: TextAlign.center),
+          const SizedBox(height: 20),
+
           ConstuIpuntField(
             labelText: 'Nombre',
             keyboardKey: TextInputType.name,
