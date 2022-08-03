@@ -54,7 +54,7 @@ class ConstuIpuntField extends StatelessWidget {
             name: formValues['Nombre'],
             email: formValues['Correo'],
             about: formValues['About'],
-            isDark: true);
+            isDarkmode: true);
         formValues[formProperty] = value;
       },
       validator: (value) {

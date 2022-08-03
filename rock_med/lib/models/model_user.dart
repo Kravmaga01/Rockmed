@@ -11,7 +11,7 @@ class ModelUser {
     required this.name,
     required this.email,
     required this.about,
-    required this.isDark,
+    required this.isDarkmode,
   });
 
   final String coverImagPath;
@@ -19,7 +19,7 @@ class ModelUser {
   final String name;
   final String email;
   final String about;
-  final bool isDark;
+  final bool isDarkmode;
 
   factory ModelUser.fromJson(String str) => ModelUser.fromMap(json.decode(str));
 
@@ -31,7 +31,7 @@ class ModelUser {
         name: json["name"],
         email: json["email"],
         about: json["about"],
-        isDark: json["isDark"],
+        isDarkmode: json["isDark"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -40,6 +40,6 @@ class ModelUser {
         "name": name,
         "email": email,
         "about": about,
-        "isDark": isDark,
+        "isDark": isDarkmode,
       };
 }

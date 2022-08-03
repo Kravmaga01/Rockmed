@@ -8,5 +8,5 @@ class UserPreferences {
       name: myUser.name,
       email: '',
       about: myUser.about,
-      isDark: myUser.isDark);
+      isDarkmode: myUser.isDarkmode);
 }

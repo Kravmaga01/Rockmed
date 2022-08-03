@@ -10,7 +10,7 @@ class MianPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
           body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (contex, snapshot) {
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),

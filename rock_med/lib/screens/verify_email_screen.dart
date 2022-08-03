@@ -11,26 +11,27 @@ class VerifyEmaiglScreen extends StatefulWidget {
 
   @override
   State<VerifyEmaiglScreen> createState() =>
-      _VerifyEmaiglScreenState(); //* ESTADO
+      _VerifyEmailScreenState(); //* ESTADO
 }
 
-class _VerifyEmaiglScreenState extends State<VerifyEmaiglScreen> {
+class _VerifyEmailScreenState extends State<VerifyEmaiglScreen> {
   //TODO: VERIFICACIÓN DE DATODS
-  bool isEmailVerified = false; //* SE INICIA LA VALIDACIÓN EL FALSE
-  bool canResendEmail = false; //* SE INICIA EL RESEN EN FALSE
-  Timer? timer; //* ALMACENARA EL VALOR DEL TIEMPO DE ESPERA
-  final emailController = TextEditingController(); //* VALOR DEL EMAIL
+
+  bool isEmailVerified = false; //SE INICIA LA VALIDACIÓN EL FALSE
+  bool canResendEmail = false; // SE INICIA EL RESEN EN FALSE
+  Timer? timer; // ALMACENARA EL VALOR DEL TIEMPO DE ESPERA
+  final emailController = TextEditingController(); // VALOR DEL EMAIL
   @override
   void initState() {
-    //*SOBRE ESCRITURA
-    super.initState(); //* SE INICIA LA EL CONSTRUCTOR SUPERIOR
+    //SOBRE ESCRITURA
+    super.initState(); // SE INICIA LA EL CONSTRUCTOR SUPERIOR
     isEmailVerified = FirebaseAuth.instance.currentUser!
-        .emailVerified; //* isEmailVerified  SE ALMACENA EL VALOR VERIFICADO DEL IMAIL
+        .emailVerified; //  isEmailVerified  SE ALMACENA EL VALOR VERIFICADO DEL IMAIL
     if (!isEmailVerified) {
-      //* SI EL VALOR ES DIFERENTE
-      sendVerificationEmail(); //* SE ENVIA EL VALOR AL CORREO
+      // SI EL VALOR ES DIFERENTE
+      sendVerificationEmail(); // SE ENVIA EL VALOR AL CORREO
       timer = Timer.periodic(
-        //* TIEMPO DE ESPERA DE VALIDACÓN DEL CORREO
+        // TIEMPO DE ESPERA DE VALIDACÓN DEL CORREO
         Duration(seconds: 3),
         (timer) => checkEmailVerified(),
       );
@@ -44,18 +45,17 @@ class _VerifyEmaiglScreenState extends State<VerifyEmaiglScreen> {
   }
 
   Future checkEmailVerified() async {
-    //* VERIFICA QUE SEA CORRECTO EL CORREO.
-    await FirebaseAuth.instance.currentUser!
-        .reload(); //* SE ESPERA LA EJECUCIÓN
+    // VERIFICA QUE SEA CORRECTO EL CORREO.
+    await FirebaseAuth.instance.currentUser!.reload(); // SE ESPERA LA EJECUCIÓN
     setState(() {
-      //* SE EJECUTA EL ESTADO
+      // SE EJECUTA EL ESTADO
       isEmailVerified = FirebaseAuth
-          .instance.currentUser!.emailVerified; //*RESPONDE A LA SOLICITUD
+          .instance.currentUser!.emailVerified; //RESPONDE A LA SOLICITUD
     });
   }
 
   Future sendVerificationEmail() async {
-    //* SI EL ESTADO ES CORRECTO SE RETORNA TRUE DE LA CONTRARIO FALSE
+    // SI EL ESTADO ES CORRECTO SE RETORNA TRUE DE LA CONTRARIO FALSE
     try {
       final user = FirebaseAuth.instance.currentUser!;
       await user.sendEmailVerification();
@@ -66,6 +66,7 @@ class _VerifyEmaiglScreenState extends State<VerifyEmaiglScreen> {
       Utils.showSnackBar(e.toString());
     }
   }
+
 //TODO: INICIO DEL ESTILO
 
   @override

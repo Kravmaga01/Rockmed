@@ -2,6 +2,7 @@
 
 import 'package:provider/provider.dart';
 import 'package:rock_med/providers/providers.dart';
+import 'package:rock_med/providers/theme_provider.dart';
 import 'package:rock_med/router/routersApp.dart';
 import 'package:rock_med/themes/themes_standar.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,10 @@ class AppStete extends StatelessWidget {
     return MultiProvider(
       // multiProvider para permitir diferentes provider de ser necesario
       providers: [
-        ChangeNotifierProvider(create: (_) => EventService())
+        ChangeNotifierProvider(create: (_) => EventService()),
+        ChangeNotifierProvider(
+            create: (_) =>
+                ThemeProvider(isDarKmode: UserPreferences.myUser.isDarkmode))
       ], //! verifica que la conexión a la base de datos sea correcta enviando el contexto
       child: const MyApp(), // si la noticiación es correcta se corre la app
     );
@@ -47,16 +51,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      scaffoldMessengerKey: Utils
-          .messengerKey, // Permitira capturar un error y arrojarlo como un snackbar
-      navigatorKey: navigatorKey, // la llave global para mantner estados
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      initialRoute: RouterApp.initiaRouter, // ruta inical
-      routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
-      onGenerateRoute:
-          RouterApp.onGenerateRoute, // genera las rutas exitentes para el uso
-      theme: AppTheme.darkTheme, // temas principal.
-    );
+        scaffoldMessengerKey: Utils
+            .messengerKey, // Permitira capturar un error y arrojarlo como un snackbar
+        navigatorKey: navigatorKey, // la llave global para mantner estados
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        initialRoute: RouterApp.initiaRouter, // ruta inical
+        routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
+        onGenerateRoute:
+            RouterApp.onGenerateRoute, // genera las rutas exitentes para el uso
+        theme:
+            Provider.of<ThemeProvider>(context).currentTheme // temas principal.
+        );
   }
 }
