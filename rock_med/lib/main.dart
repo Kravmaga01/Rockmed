@@ -34,7 +34,7 @@ class AppStete extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => EventService())
       ], //! verifica que la conexión a la base de datos sea correcta enviando el contexto
-      child: MyApp(), // si la noticiación es correcta se corre la app
+      child: const MyApp(), // si la noticiación es correcta se corre la app
     );
   }
 }

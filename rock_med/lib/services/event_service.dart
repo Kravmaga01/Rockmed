@@ -94,8 +94,8 @@ class EventService extends ChangeNotifier {
   }
 
   void updateSelectedEventImage(String path) {
-    this.selecEvent.flayer = path;
-    this.newPrictureFile = File.fromUri(Uri(path: path));
+    selecEvent.flayer = path;
+    newPrictureFile = File.fromUri(Uri(path: path));
     notifyListeners();
   }
 
@@ -122,8 +122,6 @@ class EventService extends ChangeNotifier {
 
     return decodeData['secure_url'];
   }
-
-  Future refreshEvent() async {}
 
   void updateSelecedProductImage(String path) {
     selecEvent.flayer = path;
