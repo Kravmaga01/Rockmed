@@ -1,10 +1,6 @@
 //Todo: servicio  para eventos
 import 'dart:convert';
 import 'dart:io';
-<<<<<<< HEAD
-=======
-
->>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -20,13 +16,10 @@ class EventService extends ChangeNotifier {
   bool isLoading = true;
   bool isSaving = false; // se pregunta si esta cargando
   bool isDelete = false;
-<<<<<<< HEAD
-  File? newPictureFile;
-=======
+
   late ModelEvent selectedProduct;
   File? newPrictureFile;
 
->>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
   eventsService() async {
     // se  inicializa la carga de los eventos
     await loadEvent();
@@ -100,15 +93,14 @@ class EventService extends ChangeNotifier {
     return events;
   }
 
-<<<<<<< HEAD
   void updateSelectedEventImage(String path) {
     this.selecEvent!.flayer = path;
-    this.newPictureFile = File.fromUri(Uri(path: path));
+    this.newPrictureFile = File.fromUri(Uri(path: path));
     notifyListeners();
   }
 
   Future<String?> uploadImage() async {
-    if (newPictureFile == null) {
+    if (newPrictureFile == null) {
       return null;
     }
     isSaving = true;
@@ -117,7 +109,7 @@ class EventService extends ChangeNotifier {
         'https://api.cloudinary.com/v1_1/dwto7elhs/image/upload/?upload_preset=eventImagenes');
     final imageUploadRequest = http.MultipartRequest('POST', url);
     final file =
-        await http.MultipartFile.fromPath('file', newPictureFile!.path);
+        await http.MultipartFile.fromPath('file', newPrictureFile!.path);
     imageUploadRequest.files.add(file);
 
     final streamResponse = await imageUploadRequest.send();
@@ -125,18 +117,17 @@ class EventService extends ChangeNotifier {
     if (resp.statusCode != 200 && resp.statusCode != 201) {
       return null;
     }
-    newPictureFile = null;
+    newPrictureFile = null;
     final decodeData = json.decode(resp.body);
 
     return decodeData['secure_url'];
   }
 
   Future refreshEvent() async {}
-=======
+
   void updateSelecedProductImage(String path) {
-    this.selecEvent.flayer = path;
-    this.newPrictureFile = File.fromUri(Uri(path: path));
+    selecEvent.flayer = path;
+    newPrictureFile = File.fromUri(Uri(path: path));
     notifyListeners();
   }
->>>>>>> 3aff95c6cb8b47cefc5e6cc4f0ea4cae6c2448d7
 }
