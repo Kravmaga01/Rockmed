@@ -1,11 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rock_med/models/model_user.dart';
 
 class UserPreferences {
   static ModelUser myUser = ModelUser(
-      'https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg',
-      'https://i.blogs.es/66b2a4/photo-1511367461989-f85a21fda167/1366_2000.jpeg',
-      'Edward alexander',
-      '',
-      'Lorem30',
-      true);
+      coverImagPath: myUser.coverImagPath,
+      imagePath: myUser.imagePath,
+      name: myUser.name,
+      email: '',
+      about: myUser.about,
+      isDark: myUser.isDark);
 }

@@ -44,12 +44,14 @@ class ConstuIpuntField extends StatelessWidget {
       controller: controller,
       onChanged: (value) {
         UserPreferences.myUser = ModelUser(
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s',
-            'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
-            formValues['Nombre'],
-            formValues['Correo'],
-            '',
-            false);
+            coverImagPath:
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s',
+            imagePath:
+                'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
+            name: formValues['Nombre'],
+            email: formValues['Correo'],
+            about: '',
+            isDark: false);
         formValues[formProperty] = value;
       },
       validator: (value) {

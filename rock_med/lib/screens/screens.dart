@@ -1,3 +1,5 @@
+export 'package:rock_med/screens/solicitud_event_screen.dart';
+
 export 'package:rock_med/screens/edit_profile_screen.dart';
 
 export 'package:rock_med/screens/acept_terminos_banda.dart';

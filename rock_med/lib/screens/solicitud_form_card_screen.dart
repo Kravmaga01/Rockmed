@@ -77,7 +77,8 @@ class _EventFromScreenBody extends StatelessWidget {
                       ? null
                       : () async {
                           await eventService.deleteEvent(eventForm.event);
-                          Navigator.popAndPushNamed(context, 'solicitudEvent');
+                          // ignore: use_build_context_synchronously
+                          Navigator.pop(context);
                         },
                   child: const Text('Eliminar Evento'))
             ],

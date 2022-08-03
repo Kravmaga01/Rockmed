@@ -6,8 +6,6 @@ import 'package:rock_med/router/routersApp.dart';
 import 'package:rock_med/themes/themes_standar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-
-import 'services/banda_service.dart';
 import 'services/event_service.dart';
 import 'shere_preferences/preferences.dart';
 
@@ -45,8 +43,7 @@ final navigatorKey =
     GlobalKey<NavigatorState>(); //! la navigatorKey sera la llave global
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-  final user = UserPreferences.myUser;
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,9 +56,7 @@ class MyApp extends StatelessWidget {
       routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
       onGenerateRoute:
           RouterApp.onGenerateRoute, // genera las rutas exitentes para el uso
-      theme: user.isDark
-          ? AppTheme.darkTheme
-          : AppTheme.lightTheme, // temas principal.
+      theme: AppTheme.darkTheme, // temas principal.
     );
   }
 }
