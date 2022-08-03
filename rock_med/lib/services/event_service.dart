@@ -94,7 +94,7 @@ class EventService extends ChangeNotifier {
   }
 
   void updateSelectedEventImage(String path) {
-    this.selecEvent!.flayer = path;
+    this.selecEvent.flayer = path;
     this.newPrictureFile = File.fromUri(Uri(path: path));
     notifyListeners();
   }

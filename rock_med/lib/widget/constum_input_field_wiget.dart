@@ -15,6 +15,7 @@ class ConstuIpuntField extends StatelessWidget {
   final TextEditingController? controller;
   final String? initialValue;
   Function(String)? onChanged;
+  final int? maxLines;
 
   ConstuIpuntField(
       {Key? key,
@@ -29,7 +30,8 @@ class ConstuIpuntField extends StatelessWidget {
       required this.formProperty,
       required this.formValues,
       this.controller,
-      this.initialValue})
+      this.initialValue,
+      this.maxLines})
       : super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class ConstuIpuntField extends StatelessWidget {
     return TextFormField(
       // input
       initialValue: initialValue,
+      maxLines: maxLines,
       obscureText: obscureText,
       keyboardType: keyboardKey,
       textCapitalization: TextCapitalization.words,
@@ -50,8 +53,8 @@ class ConstuIpuntField extends StatelessWidget {
                 'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
             name: formValues['Nombre'],
             email: formValues['Correo'],
-            about: '',
-            isDark: false);
+            about: formValues['About'],
+            isDark: true);
         formValues[formProperty] = value;
       },
       validator: (value) {

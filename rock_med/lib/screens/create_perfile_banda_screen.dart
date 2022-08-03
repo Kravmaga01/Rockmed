@@ -72,6 +72,20 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
       TextEditingController passwordController,
       BuildContext context,
       Future<dynamic> singUP()) {
+    return FormBanda(formKey, formValues, emailController, validatorPasword,
+        passwordController, context, singUP);
+  }
+
+  //Todo: inicio  Formulario
+
+  Form FormBanda(
+      GlobalKey<FormState> formKey,
+      Map<String, String> formValues,
+      TextEditingController emailController,
+      String? validatorPasword,
+      TextEditingController passwordController,
+      BuildContext context,
+      Future<dynamic> singUP()) {
     return Form(
       // la auto  validación se dispara con la interacción del usuario
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -152,6 +166,15 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
             formValues: formValues,
           ),
           const SizedBox(height: 30),
+          ConstuIpuntField(
+            labelText: 'Que tienes para contarnos ',
+            keyboardKey: TextInputType.text,
+            formProperty: 'About',
+            formValues: formValues,
+            maxLines: 5,
+          ),
+          const SizedBox(height: 30),
+
           ElevatedButton(
             onPressed: () async {
               FocusScope.of(context).requestFocus(FocusNode());

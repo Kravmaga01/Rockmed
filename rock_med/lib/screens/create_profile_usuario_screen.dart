@@ -22,7 +22,7 @@ class _CreateProfileUsuarioScreenState
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    Map<String, String> formValues = FromUsuarioValues();
+    Map<String, String> formValues = ModelFromUsuarioValues();
     final emailController =
         TextEditingController(); // se genera un controlador de texto
     final passwordController =
@@ -156,6 +156,14 @@ class _CreateProfileUsuarioScreenState
             keyboardKey: TextInputType.text,
             formProperty: 'Fecha',
             formValues: formValues,
+          ),
+          const SizedBox(height: 30),
+          ConstuIpuntField(
+            labelText: 'Que tienes para contarnos ',
+            keyboardKey: TextInputType.text,
+            formProperty: 'About',
+            formValues: formValues,
+            maxLines: 5,
           ),
           const SizedBox(height: 30),
           ElevatedButton(

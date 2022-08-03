@@ -155,6 +155,14 @@ class _CreateProfileBarScreenState extends State<CreateProfileBarScreen> {
             formValues: formValues,
           ),
           const SizedBox(height: 30),
+          ConstuIpuntField(
+            labelText: 'Que tienes para contarnos ',
+            keyboardKey: TextInputType.text,
+            formProperty: 'About',
+            formValues: formValues,
+            maxLines: 5,
+          ),
+          const SizedBox(height: 30),
           ElevatedButton(
             onPressed: () async {
               FocusScope.of(context).requestFocus(FocusNode());

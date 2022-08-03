@@ -1,11 +1,11 @@
-Map<String, String> FromUsuarioValues() {
+Map<String, String> ModelFromUsuarioValues() {
   final Map<String, String> formValues = {
     'Nombre': 'NombreBanda',
     'Correo': 'correo',
     'Password': 'password',
     'Fecha': 'FechaDeNacimiento',
+    'About': 'about',
     'Rol': 'usuario',
-    'About': 'about'
   };
   return formValues;
 }
