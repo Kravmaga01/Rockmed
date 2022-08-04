@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:rock_med/shere_preferences/preferences.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/app_bar_change_theme.dart';
 import 'package:rock_med/widget/constume_top_profile_wiget.dart';
@@ -33,16 +34,16 @@ class Homescreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                buildCoverImage(userPrefece, onClicked, coverHeight),
+                buildCoverImage(onClicked, coverHeight),
                 Positioned(
                   top: top,
                   child: Row(children: [
                     ProfileWidget(
-                      imagePath: userPrefece.imagePath,
+                      imagePath: Preferences.imagePath,
                       onClicked: () => Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => const EditProfileScreen())),
-                      coverImagPath: userPrefece.coverImagPath,
+                      coverImagPath: Preferences.coverImagePath,
                       isEdit: false,
                     ),
                     Padding(
@@ -52,7 +53,7 @@ class Homescreen extends StatelessWidget {
                 ),
               ],
             ),
-            buildAbout(userPrefece),
+            buildAbout(),
           ],
         ),
       ]),
@@ -80,8 +81,8 @@ class Homescreen extends StatelessWidget {
         ],
       );
 
-  Widget buildCoverImage(userPreferece, onClicked, coverHeight) {
-    final image = NetworkImage(userPreferece.coverImagPath);
+  Widget buildCoverImage(onClicked, coverHeight) {
+    final image = NetworkImage(Preferences.coverImagePath);
     return Material(
         color: Colors.transparent,
         child: Ink.image(
@@ -95,7 +96,7 @@ class Homescreen extends StatelessWidget {
         ));
   }
 
-  Widget buildAbout(userPreference) => Container(
+  Widget buildAbout() => Container(
         padding: const EdgeInsets.symmetric(horizontal: 48),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -111,7 +112,7 @@ class Homescreen extends StatelessWidget {
               height: 16,
             ),
             Text(
-              userPrefece.about,
+              Preferences.about,
               style: const TextStyle(fontSize: 16, height: 1.4),
             )
           ],

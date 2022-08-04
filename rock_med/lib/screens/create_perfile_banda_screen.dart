@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/providers/providers.dart';
+import 'package:rock_med/shere_preferences/preferences.dart';
 import '../main.dart';
 import '../models/models.dart';
 import '../themes/themes.dart';
@@ -180,7 +181,6 @@ class _CreatePerfileBandaScreenState extends State<CreatePerfileBandaScreen> {
             maxLines: 5,
           ),
           const SizedBox(height: 30),
-
           ElevatedButton(
             onPressed: () async {
               FocusScope.of(context).requestFocus(FocusNode());

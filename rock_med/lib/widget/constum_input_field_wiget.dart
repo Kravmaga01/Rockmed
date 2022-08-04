@@ -53,6 +53,7 @@ class ConstuIpuntField extends StatelessWidget {
         Preferences.direccion = formValues['Correo'];
         Preferences.about = formValues['About'];
         Preferences.isDarkmode = true;
+        Preferences.role = formValues['role'];
         formValues[formProperty] = value;
       },
       validator: (value) {
