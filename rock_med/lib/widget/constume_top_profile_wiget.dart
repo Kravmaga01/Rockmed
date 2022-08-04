@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 
 class ProfileWidget extends StatelessWidget {
-  final String coverImagPath;
+  final String coverImagePath;
   final String imagePath;
   final VoidCallback? onClicked;
   final bool isEdit;
@@ -11,7 +11,7 @@ class ProfileWidget extends StatelessWidget {
       {Key? key,
       required this.imagePath,
       this.onClicked,
-      required this.coverImagPath,
+      required this.coverImagePath,
       required this.isEdit})
       : super(key: key);
   final double coverHeight = 280;

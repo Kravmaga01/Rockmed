@@ -1,11 +1,12 @@
 //todo : El mian es el archivo principal de nuestra aplicación.
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:rock_med/providers/providers.dart';
 import 'package:rock_med/providers/theme_provider.dart';
 import 'package:rock_med/router/routersApp.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart' show Firebase;
+import 'package:rock_med/themes/themes.dart';
 import 'services/event_service.dart';
 import 'shere_preferences/preferences.dart';
 
@@ -60,8 +61,8 @@ class MyApp extends StatelessWidget {
         routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
         onGenerateRoute:
             RouterApp.onGenerateRoute, // genera las rutas exitentes para el uso
-        theme:
-            Provider.of<ThemeProvider>(context).currentTheme // temas principal.
+        theme: AppTheme.darkTheme
+        // temas principal.
         );
   }
 }

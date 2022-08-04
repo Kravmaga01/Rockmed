@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rock_med/services/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 //Todo: Esta clase  contiene el get y el ser de las preferencias de usuario.
@@ -7,15 +9,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Preferences {
   // metodos estaticos
   static late SharedPreferences _prefs;
-  static String _name = 'EDWARD';
-  static bool _isDarkmode = true;
+  static String _name = UserPreferences.myUser.name;
+  static bool _isDarkmode = UserPreferences.myUser.isDarkmode;
   static String _generoMusical = 'ROCK';
   static String _edad = '18';
   static String _direccion = 'MEDELLÍN';
-  static String _about = 'SOY REPONSABLE Y UN GRAN TRABAJADOR';
-  static String _role = 'ADMIN';
-  static String _coverImagPath =
-      'https://restorixhealth.com/wp-content/uploads/2018/08/No-Image.png';
+  static String _about = UserPreferences.myUser.about;
+  static String _role = '';
+  static String _coverImagPath = UserPreferences.myUser.coverImagePath;
   static String _imagePath =
       'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png';
 

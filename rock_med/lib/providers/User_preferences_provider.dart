@@ -3,10 +3,11 @@ import 'package:rock_med/models/model_user.dart';
 
 class UserPreferences {
   static ModelUser myUser = ModelUser(
-      coverImagPath: myUser.coverImagPath,
+      coverImagePath: myUser.coverImagePath,
       imagePath: myUser.imagePath,
       name: myUser.name,
       email: '',
       about: myUser.about,
-      isDarkmode: myUser.isDarkmode);
+      isDarkmode: myUser.isDarkmode,
+      role: '');
 }

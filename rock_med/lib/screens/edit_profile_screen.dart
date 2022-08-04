@@ -27,7 +27,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ProfileWidget(
                 imagePath: user.imagePath,
                 isEdit: true,
-                coverImagPath: user.coverImagPath),
+                coverImagePath: user.coverImagePath),
             TexFieldWidget(
                 label: 'Nick', text: user.name, onChanged: (name) {}),
             const SizedBox(height: 10),

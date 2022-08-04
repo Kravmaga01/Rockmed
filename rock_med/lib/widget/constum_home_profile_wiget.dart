@@ -34,16 +34,16 @@ class Homescreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                buildCoverImage(onClicked, coverHeight),
+                buildCoverImage(userPrefece, onClicked, coverHeight),
                 Positioned(
                   top: top,
                   child: Row(children: [
                     ProfileWidget(
-                      imagePath: Preferences.imagePath,
+                      imagePath: userPrefece.imagePath,
                       onClicked: () => Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => const EditProfileScreen())),
-                      coverImagPath: Preferences.coverImagePath,
+                      coverImagePath: userPrefece.coverImagePath,
                       isEdit: false,
                     ),
                     Padding(
@@ -70,7 +70,7 @@ class Homescreen extends StatelessWidget {
   Widget buildName() => Column(
         children: [
           Text(
-            Preferences.name,
+            userPrefece.name,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 24,
@@ -81,8 +81,8 @@ class Homescreen extends StatelessWidget {
         ],
       );
 
-  Widget buildCoverImage(onClicked, coverHeight) {
-    final image = NetworkImage(Preferences.coverImagePath);
+  Widget buildCoverImage(userPreference, onClicked, coverHeight) {
+    final image = NetworkImage(userPrefece.coverImagePath);
     return Material(
         color: Colors.transparent,
         child: Ink.image(
@@ -112,7 +112,7 @@ class Homescreen extends StatelessWidget {
               height: 16,
             ),
             Text(
-              Preferences.about,
+              userPrefece.about,
               style: const TextStyle(fontSize: 16, height: 1.4),
             )
           ],
