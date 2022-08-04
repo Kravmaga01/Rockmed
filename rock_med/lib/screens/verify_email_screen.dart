@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/screens/screens.dart';
 import '../providers/providers.dart';
+import '../shere_preferences/preferences.dart';
 import '../themes/themes.dart';
 
 //* ESTE SCREEN SE CREA A LA ESPERA DE LA CONFIRMACIÓN DEL CORREO
@@ -46,7 +47,8 @@ class _VerifyEmailScreenState extends State<VerifyEmaiglScreen> {
 
   Future checkEmailVerified() async {
     // VERIFICA QUE SEA CORRECTO EL CORREO.
-    await FirebaseAuth.instance.currentUser!.reload(); // SE ESPERA LA EJECUCIÓN
+    await FirebaseAuth.instance.currentUser!.reload();
+    // SE ESPERA LA EJECUCIÓN
     setState(() {
       // SE EJECUTA EL ESTADO
       isEmailVerified = FirebaseAuth

@@ -1,7 +1,9 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rock_med/shere_preferences/preferences.dart';
+import 'package:rock_med/themes/themes.dart';
 
 import '../shere_preferences/preferences.dart';
 
@@ -13,11 +15,15 @@ AppBar buildAppBar(BuildContext context) {
       ThemeSwitcher(
         builder: (context) => IconButton(
             onPressed: () {
+              bool value;
               if (Preferences.isDarkmode) {
-                Preferences.isDarkmode = false;
+                value = false;
               } else {
-                Preferences.isDarkmode = true;
+                value = false;
               }
+              Preferences.isDarkmode = value;
+              final themeProvider =
+                  Provider.of<ThemeProvider>(context, listen: false);
             },
             icon: const Icon(icon)),
       )

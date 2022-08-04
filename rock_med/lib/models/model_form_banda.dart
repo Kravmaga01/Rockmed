@@ -5,7 +5,7 @@ Map<String, String> ModelFormValuesBanda() {
     'Password': 'password',
     'Genero': 'Genero musical',
     'About': 'about',
-    'Rol': 'Banda',
+    'Role': 'Banda',
   };
   return formValues;
 }

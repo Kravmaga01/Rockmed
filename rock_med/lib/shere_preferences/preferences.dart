@@ -7,15 +7,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Preferences {
   // metodos estaticos
   static late SharedPreferences _prefs;
-  static String _name = '';
+  static String _name = 'EDWARD';
   static bool _isDarkmode = true;
-  static String _generoMusical = '';
-  static String _edad = '';
-  static String _direccion = '';
-  static String _about = '';
-  static String _role = '';
-  static String _coverImagPath = '';
-  static String _imagePath = '';
+  static String _generoMusical = 'ROCK';
+  static String _edad = '18';
+  static String _direccion = 'MEDELLÍN';
+  static String _about = 'SOY REPONSABLE Y UN GRAN TRABAJADOR';
+  static String _role = 'ADMIN';
+  static String _coverImagPath =
+      'https://restorixhealth.com/wp-content/uploads/2018/08/No-Image.png';
+  static String _imagePath =
+      'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png';
 
 //*todo: inico del get.
 

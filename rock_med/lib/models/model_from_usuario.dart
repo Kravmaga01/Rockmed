@@ -5,7 +5,7 @@ Map<String, String> ModelFromUsuarioValues() {
     'Password': 'password',
     'Fecha': 'FechaDeNacimiento',
     'About': 'about',
-    'Rol': 'usuario',
+    'Role': 'usuario',
   };
   return formValues;
 }
