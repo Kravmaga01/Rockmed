@@ -48,7 +48,7 @@ class Homescreen extends StatelessWidget {
                     ),
                     Padding(
                         padding: const EdgeInsets.only(left: 40),
-                        child: buildName(userPrefece)),
+                        child: buildName()),
                   ]),
                 ),
               ],
@@ -67,10 +67,10 @@ class Homescreen extends StatelessWidget {
         child: funtione,
       ));
 
-  Widget buildName(userPreferences) => Column(
+  Widget buildName() => Column(
         children: [
           Text(
-            userPrefece.name,
+            Preferences.name,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 24,

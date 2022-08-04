@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/services/services.dart';
+import 'package:rock_med/shere_preferences/preferences.dart';
 import 'package:rock_med/themes/themes.dart';
 
 class SideMenu extends StatelessWidget {
@@ -80,7 +81,7 @@ class _DrawerHeader extends StatelessWidget {
     return DrawerHeader(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(UserPreferences.myUser.coverImagPath),
+              image: NetworkImage(Preferences.coverImagePath),
               fit: BoxFit.cover)),
       child: Container(),
     );
