@@ -8,21 +8,15 @@ import '../providers/providers.dart';
 import '../screens/screens.dart';
 
 class Homescreen extends StatefulWidget {
-  Homescreen({
-    Key? key,
-    required this.user,
-    required this.onClicked,
-  }) : super(key: key);
+  Homescreen({Key? key}) : super(key: key);
 
-  User user;
-  final VoidCallback onClicked;
-
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   State<Homescreen> createState() => _HomescreenState();
 }
 
 class _HomescreenState extends State<Homescreen> {
-  final userPrefece = UserPreferences.myUser;
+  final userPrefece = UserPreferences.getUser();
 
   final double coverHeight = 220;
 
@@ -32,7 +26,6 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
     final top = coverHeight - profileHeight / 2;
     return Scaffold(
       appBar: buildAppBar(context),
@@ -43,7 +36,7 @@ class _HomescreenState extends State<Homescreen> {
           children: [
             Stack(
               children: [
-                buildCoverImage(userPrefece, widget.onClicked, coverHeight),
+                buildCoverImage(userPrefece, coverHeight),
                 Positioned(
                   top: top,
                   child: Row(children: [
@@ -51,7 +44,7 @@ class _HomescreenState extends State<Homescreen> {
                       imagePath: userPrefece.imagePath,
                       onClicked: () async {
                         await Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const EditProfileScreen()));
+                            builder: (context) => EditProfileScreen()));
                         setState(() {});
                       },
                       coverImagePath: userPrefece.coverImagePath,
@@ -92,7 +85,7 @@ class _HomescreenState extends State<Homescreen> {
         ],
       );
 
-  Widget buildCoverImage(userPreference, onClicked, coverHeight) {
+  Widget buildCoverImage(userPreference, coverHeight) {
     final image = NetworkImage(userPrefece.coverImagePath);
     return Material(
         color: Colors.transparent,
@@ -101,9 +94,6 @@ class _HomescreenState extends State<Homescreen> {
           width: double.infinity,
           height: coverHeight,
           fit: BoxFit.cover,
-          child: InkWell(
-            onTap: onClicked,
-          ),
         ));
   }
 

@@ -1,3 +1,5 @@
+export 'package:rock_med/screens/home.dart';
+
 export 'package:rock_med/screens/solicitud_event_screen.dart';
 
 export 'package:rock_med/screens/edit_profile_screen.dart';
@@ -13,10 +15,7 @@ export 'package:rock_med/screens/create_profile_bar_screen.dart';
 export 'package:rock_med/screens/create_profile_bar_screen.dart';
 export 'package:rock_med/screens/create_profile_usuario_screen.dart';
 export 'package:rock_med/screens/descrition_screen.dart';
-export 'package:rock_med/screens/home_banda_screen.dart';
 export 'package:rock_med/screens/home_view.dart';
-export 'package:rock_med/screens/listview1_screen.dart';
-export 'package:rock_med/screens/listview2_screen%20.dart';
 export 'package:rock_med/screens/loading_screen.dart';
 export 'package:rock_med/screens/login_screen.dart';
 export 'package:rock_med/screens/mainpage_screen.dart';

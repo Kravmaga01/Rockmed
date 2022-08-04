@@ -53,13 +53,13 @@ class RouterApp {
     RoutersOption(
       route: 'home',
       name: 'homeScreen',
-      screen: const HomeScreen(),
+      screen: const HomeScreenview(),
       icon: Icons.home,
     ),
     RoutersOption(
         route: 'home',
         name: 'home',
-        screen: const HomeScreen(),
+        screen: const HomeScreenview(),
         icon: Icons.home_outlined),
     RoutersOption(
         route: 'Mianpage',

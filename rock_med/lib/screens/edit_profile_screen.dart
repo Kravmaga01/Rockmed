@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/models/model_user.dart';
+import 'package:rock_med/screens/screens.dart';
 import 'package:rock_med/services/services.dart';
 import 'package:rock_med/widget/constume_top_profile_wiget.dart';
 
@@ -44,7 +45,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 text: 'Guardar',
                 onClicked: () {
                   UserPreferences.setUser(user);
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Homescreen()));
                   setState(() {});
                 })
           ],

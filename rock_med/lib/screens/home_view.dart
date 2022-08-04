@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rock_med/router/routersApp.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreenview extends StatelessWidget {
+  const HomeScreenview({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
