@@ -25,11 +25,7 @@ class ModelUser {
   final bool isDarkmode;
   String? role;
 
-  factory ModelUser.fromJson(String str) => ModelUser.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory ModelUser.fromMap(Map<String, dynamic> json) => ModelUser(
+  static ModelUser fromJson(Map<String, dynamic> json) => ModelUser(
         coverImagePath: json["coverImagPath"],
         imagePath: json["imagePath"],
         name: json["name"],
@@ -39,7 +35,7 @@ class ModelUser {
         role: json['Role'],
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         "coverImagPath": coverImagePath,
         "imagePath": imagePath,
         "name": name,
