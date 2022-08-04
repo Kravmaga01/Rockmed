@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:rock_med/shere_preferences/preferences.dart';
 import 'package:rock_med/themes/themes.dart';
 import 'package:rock_med/widget/app_bar_change_theme.dart';
 import 'package:rock_med/widget/constume_top_profile_wiget.dart';
@@ -8,7 +7,7 @@ import 'package:rock_med/widget/wiget.dart';
 import '../providers/providers.dart';
 import '../screens/screens.dart';
 
-class Homescreen extends StatelessWidget {
+class Homescreen extends StatefulWidget {
   Homescreen({
     Key? key,
     required this.user,
@@ -16,10 +15,19 @@ class Homescreen extends StatelessWidget {
   }) : super(key: key);
 
   User user;
-  final userPrefece = UserPreferences.myUser;
-  final double coverHeight = 220;
-  final double profileHeight = 220;
   final VoidCallback onClicked;
+
+  @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+  final userPrefece = UserPreferences.myUser;
+
+  final double coverHeight = 220;
+
+  final double profileHeight = 220;
+
   final double contumenButom = 87;
 
   @override
@@ -34,15 +42,17 @@ class Homescreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                buildCoverImage(userPrefece, onClicked, coverHeight),
+                buildCoverImage(userPrefece, widget.onClicked, coverHeight),
                 Positioned(
                   top: top,
                   child: Row(children: [
                     ProfileWidget(
                       imagePath: userPrefece.imagePath,
-                      onClicked: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const EditProfileScreen())),
+                      onClicked: () async {
+                        await Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const EditProfileScreen()));
+                        setState(() {});
+                      },
                       coverImagePath: userPrefece.coverImagePath,
                       isEdit: false,
                     ),
@@ -77,7 +87,7 @@ class Homescreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Text('${user.email}'),
+          Text('${widget.user.email}'),
         ],
       );
 

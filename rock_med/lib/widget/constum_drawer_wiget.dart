@@ -81,7 +81,7 @@ class _DrawerHeader extends StatelessWidget {
     return DrawerHeader(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(Preferences.coverImagePath),
+              image: NetworkImage(UserPreferences.myUser.coverImagePath),
               fit: BoxFit.cover)),
       child: Container(),
     );

@@ -42,6 +42,7 @@ class _TexFieldWidgetState extends State<TexFieldWidget> {
           TextField(
             controller: controller,
             maxLines: widget.maxLines,
+            onChanged: widget.onChanged,
           ),
         ],
       );

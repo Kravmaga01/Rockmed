@@ -68,7 +68,7 @@ class _RecoverPasswordScreenState extends State<RecoverPasswordScreen> {
                         return regExp.hasMatch(value ??
                                 '') //se utiliza el operador ternario para preguntar si se cumple la condicion retorne null de lo contrario retorne el estring
                             ? null
-                            : "El formato ingresado no es permitido, porfavot verifique ";
+                            : "El formato ingresado no es permitido, porfavor verifique ";
                       },
                     ),
                     const SizedBox(

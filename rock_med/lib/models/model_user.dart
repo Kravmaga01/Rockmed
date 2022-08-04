@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:rock_med/services/services.dart';
+
 class ModelUser {
   ModelUser({
     required this.coverImagePath,
@@ -44,6 +46,21 @@ class ModelUser {
         "email": email,
         "about": about,
         "isDark": isDarkmode,
-        "Role": role,
+        "role": role,
       };
+
+  ModelUser copy(
+          {String? coverImagePath,
+          String? imagePath,
+          String? name,
+          String? email,
+          String? about,
+          bool? isDarkmode}) =>
+      ModelUser(
+          coverImagePath: coverImagePath ?? this.coverImagePath,
+          imagePath: imagePath ?? this.imagePath,
+          name: name ?? this.name,
+          email: email ?? this.email,
+          about: about ?? this.about,
+          isDarkmode: isDarkmode ?? this.isDarkmode);
 }

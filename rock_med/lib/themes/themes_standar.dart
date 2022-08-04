@@ -9,7 +9,6 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
       // color primario
       primaryColor: primary,
-
       // style de SnackBar
       snackBarTheme: const SnackBarThemeData(
           backgroundColor: primary, contentTextStyle: TextStyle(color: second)),

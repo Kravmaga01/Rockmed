@@ -1,5 +1,6 @@
 //todo : El mian es el archivo principal de nuestra aplicación.
 
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:rock_med/providers/providers.dart';
@@ -20,7 +21,7 @@ void main() async {
       .ensureInitialized(); // este wiget nos sirve para indicar que debe de esperar para constuir los wiget asincornos
   await Firebase
       .initializeApp(); // inicializamos la aplicación creada en firebase
-  await Preferences
+  await UserPreferences
       .init(); // se inician las preferencias de usuario al macenadas de manera local
   runApp(const AppStete()); // se corre  el appstate
 }
@@ -36,8 +37,6 @@ class AppStete extends StatelessWidget {
       // multiProvider para permitir diferentes provider de ser necesario
       providers: [
         ChangeNotifierProvider(create: (_) => EventService()),
-        ChangeNotifierProvider(
-            create: (_) => ThemeProvider(isDarKmode: Preferences.isDarkmode))
       ], //! verifica que la conexión a la base de datos sea correcta enviando el contexto
       child: const MyApp(), // si la noticiación es correcta se corre la app
     );
@@ -51,18 +50,22 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        scaffoldMessengerKey: Utils
-            .messengerKey, // Permitira capturar un error y arrojarlo como un snackbar
-        navigatorKey: navigatorKey, // la llave global para mantner estados
-        debugShowCheckedModeBanner: false,
-        title: 'Material App',
-        initialRoute: RouterApp.initiaRouter, // ruta inical
-        routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
-        onGenerateRoute:
-            RouterApp.onGenerateRoute, // genera las rutas exitentes para el uso
-        theme: AppTheme.darkTheme
-        // temas principal.
-        );
+    return ThemeProvider(
+      initTheme: AppTheme.darkTheme,
+      child: Builder(
+        builder: (context) => MaterialApp(
+          theme: AppTheme.darkTheme, // genera las rutas exitentes para el uso
+          scaffoldMessengerKey: Utils
+              .messengerKey, // Permitira capturar un error y arrojarlo como un snackbar
+          navigatorKey: navigatorKey, // la llave global para mantner estados
+          debugShowCheckedModeBanner: false,
+          title: 'Material App',
+          initialRoute: RouterApp.initiaRouter, // ruta inical
+          routes: RouterApp.getAppRoutes(), // almacenas las rutas exitentes
+          onGenerateRoute: RouterApp.onGenerateRoute,
+          // temas principal.
+        ),
+      ),
+    );
   }
 }
