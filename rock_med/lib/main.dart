@@ -14,7 +14,9 @@ import 'shere_preferences/preferences.dart';
 //!importante
 void main() async {
   // espera a que inicialice la base de datos y la aplicacción
-  WidgetsFlutterBinding(); // este wiget nos sirve para indicar que debe de esperar para constuir los wiget asincornos
+  WidgetsFlutterBinding();
+  WidgetsFlutterBinding
+      .ensureInitialized(); // este wiget nos sirve para indicar que debe de esperar para constuir los wiget asincornos
   await Firebase
       .initializeApp(); // inicializamos la aplicación creada en firebase
   await Preferences

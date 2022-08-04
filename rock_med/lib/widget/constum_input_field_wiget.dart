@@ -46,14 +46,14 @@ class ConstuIpuntField extends StatelessWidget {
       controller: controller,
       onChanged: (value) {
         Preferences.coverImagePath =
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s';
+            'https://restorixhealth.com/wp-content/uploads/2018/08/No-Image.png';
         Preferences.imagePath =
             'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png';
         Preferences.name = formValues['Nombre'];
         Preferences.direccion = formValues['Correo'];
         Preferences.about = formValues['About'];
         Preferences.isDarkmode = true;
-        Preferences.role = formValues['role'];
+        Preferences.role = formValues['Role'];
         formValues[formProperty] = value;
       },
       validator: (value) {

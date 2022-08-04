@@ -48,7 +48,7 @@ class AppTheme {
       // style de SnackBar
       snackBarTheme: const SnackBarThemeData(
           backgroundColor: primaryligth,
-          contentTextStyle: TextStyle(color: second)),
+          contentTextStyle: TextStyle(color: primary)),
       // appBartheme
       // FloatingActionbottonTeme
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
