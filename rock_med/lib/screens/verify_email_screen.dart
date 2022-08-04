@@ -73,7 +73,7 @@ class _VerifyEmailScreenState extends State<VerifyEmaiglScreen> {
 
   @override
   Widget build(BuildContext context) => isEmailVerified
-      ? const HomeBandaScreen()
+      ? const HomeScreen()
       : Scaffold(
           body: Column(
           children: [

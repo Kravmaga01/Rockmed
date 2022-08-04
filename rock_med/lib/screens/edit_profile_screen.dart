@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/models/model_user.dart';
 import 'package:rock_med/services/services.dart';
@@ -15,6 +16,7 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   ModelUser user = UserPreferences.getUser();
+  User users = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: buildAppBar(context),
@@ -43,6 +45,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 onClicked: () {
                   UserPreferences.setUser(user);
                   Navigator.of(context).pop();
+                  setState(() {});
                 })
           ],
         ),

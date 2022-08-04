@@ -57,9 +57,9 @@ class RouterApp {
       icon: Icons.home,
     ),
     RoutersOption(
-        route: 'home_banda',
-        name: 'home_banda',
-        screen: const HomeBandaScreen(),
+        route: 'home',
+        name: 'home',
+        screen: const HomeScreen(),
         icon: Icons.home_outlined),
     RoutersOption(
         route: 'Mianpage',

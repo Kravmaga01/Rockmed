@@ -2,10 +2,6 @@
 //
 //     final modelUser = modelUserFromMap(jsonString);
 
-import 'dart:convert';
-
-import 'package:rock_med/services/services.dart';
-
 class ModelUser {
   ModelUser({
     required this.coverImagePath,
