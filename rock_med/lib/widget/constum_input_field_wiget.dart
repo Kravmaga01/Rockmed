@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rock_med/models/model_user.dart';
-import 'package:rock_med/services/services.dart';
+import 'package:rock_med/shere_preferences/preferences.dart';
 
 class ConstuIpuntField extends StatelessWidget {
   final String? hinTexT;
@@ -46,15 +45,14 @@ class ConstuIpuntField extends StatelessWidget {
       autofocus: true,
       controller: controller,
       onChanged: (value) {
-        UserPreferences.myUser = ModelUser(
-            coverImagPath:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s',
-            imagePath:
-                'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png',
-            name: formValues['Nombre'],
-            email: formValues['Correo'],
-            about: formValues['About'],
-            isDarkmode: true);
+        Preferences.coverImagePath =
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowTP0SBYzj5tuN3mFfspHeeLPuaDGSy4E-W4IzEqfZw&s';
+        Preferences.imagePath =
+            'https://brandstrat.co/wp-content/uploads/2022/01/blank-profile-picture-gd2f1d32bd_1280.png';
+        Preferences.name = formValues['Nombre'];
+        Preferences.direccion = formValues['Correo'];
+        Preferences.about = formValues['About'];
+        Preferences.isDarkmode = true;
         formValues[formProperty] = value;
       },
       validator: (value) {

@@ -12,6 +12,10 @@ class Preferences {
   static String _generoMusical = '';
   static String _edad = '';
   static String _direccion = '';
+  static String _about = '';
+  static String _role = '';
+  static String _coverImagPath = '';
+  static String _imagePath = '';
 
 //*todo: inico del get.
 
@@ -45,6 +49,26 @@ class Preferences {
     return _prefs.getString('direccion') ?? _direccion;
   }
 
+//* get de Preference role
+  static String get role {
+    return _prefs.getString('role') ?? _role;
+  }
+
+  //* get de Preference role
+  static String get about {
+    return _prefs.getString('about') ?? _about;
+  }
+
+  //* get de Preference coverImage
+  static String get coverImagePath {
+    return _prefs.getString('coverImage') ?? _coverImagPath;
+  }
+
+  //* get de Preference role
+  static String get imagePath {
+    return _prefs.getString('imagePath') ?? _imagePath;
+  }
+
 //Todo: inicio del set
 
 //* set preference name
@@ -75,5 +99,29 @@ class Preferences {
   static set direccion(String value) {
     _direccion = value;
     _prefs.setString('direccion', value);
+  }
+
+  //* set preference role
+  static set role(String value) {
+    _role = value;
+    _prefs.setString('role', value);
+  }
+
+  //* set preference edad
+  static set about(String value) {
+    _about = value;
+    _prefs.setString('about', value);
+  }
+
+//* set preference direccion
+  static set coverImagePath(String value) {
+    _coverImagPath = value;
+    _prefs.setString(' coverImagePath', value);
+  }
+
+  //* set preference role
+  static set imagePath(String value) {
+    _imagePath = value;
+    _prefs.setString(' ImagePath', value);
   }
 }

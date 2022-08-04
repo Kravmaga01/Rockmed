@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:rock_med/providers/providers.dart';
 import 'package:rock_med/providers/theme_provider.dart';
 import 'package:rock_med/router/routersApp.dart';
-import 'package:rock_med/themes/themes_standar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 import 'services/event_service.dart';
@@ -35,8 +34,7 @@ class AppStete extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => EventService()),
         ChangeNotifierProvider(
-            create: (_) =>
-                ThemeProvider(isDarKmode: UserPreferences.myUser.isDarkmode))
+            create: (_) => ThemeProvider(isDarKmode: Preferences.isDarkmode))
       ], //! verifica que la conexión a la base de datos sea correcta enviando el contexto
       child: const MyApp(), // si la noticiación es correcta se corre la app
     );
