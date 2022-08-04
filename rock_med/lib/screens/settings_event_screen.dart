@@ -9,7 +9,7 @@ class SettingsEvent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: const SideMenu(),
+      drawer: SideMenu(),
       body: Padding(
           padding: EdgeInsets.zero,
           child: SingleChildScrollView(

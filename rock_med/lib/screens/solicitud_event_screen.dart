@@ -23,7 +23,7 @@ class SolicitudScreenEvent extends StatelessWidget {
     });
     return Scaffold(
       appBar: AppBar(),
-      drawer: const SideMenu(),
+      drawer: SideMenu(),
       body: ListView.builder(
           itemCount: eventService.events.length,
           itemBuilder: (BuildContext context, index) => SolicitudCard(

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/services/services.dart';
-import 'package:rock_med/shere_preferences/preferences.dart';
 import 'package:rock_med/themes/themes.dart';
 
 class SideMenu extends StatelessWidget {
@@ -13,7 +12,7 @@ class SideMenu extends StatelessWidget {
         child: ListView(
       padding: EdgeInsets.zero,
       children: [
-        const _DrawerHeader(),
+        _DrawerHeader(),
         ListTile(
           leading: const Icon(Icons.photo_outlined),
           title: const Text(
@@ -72,7 +71,8 @@ class SideMenu extends StatelessWidget {
 }
 
 class _DrawerHeader extends StatelessWidget {
-  const _DrawerHeader({
+  final userPrefece = UserPreferences.getUser();
+  _DrawerHeader({
     Key? key,
   }) : super(key: key);
 
@@ -81,7 +81,7 @@ class _DrawerHeader extends StatelessWidget {
     return DrawerHeader(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(UserPreferences.myUser.coverImagePath),
+              image: NetworkImage(userPrefece.coverImagePath),
               fit: BoxFit.cover)),
       child: Container(),
     );
