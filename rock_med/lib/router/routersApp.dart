@@ -7,7 +7,7 @@ import '../screens/settings_event_screen.dart';
 
 class RouterApp {
   //Todo: Cambiar la ruta inical por  'Mianpage'
-  static const initiaRouter = 'home';
+  static const initiaRouter = 'welcome';
 
   static final menuOption = <RoutersOption>[
     RoutersOption(
@@ -84,7 +84,7 @@ class RouterApp {
     RoutersOption(
         route: 'settings',
         name: 'settings',
-        screen: const SettingScreen(),
+        screen: SettingScreen(),
         icon: Icons.home_outlined),
     RoutersOption(
         route: 'descripcion',

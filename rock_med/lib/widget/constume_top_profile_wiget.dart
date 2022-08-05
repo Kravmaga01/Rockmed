@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 
@@ -31,12 +33,15 @@ class ProfileWidget extends StatelessWidget {
   }
 
   Widget buildImage() {
-    final image = NetworkImage(imagePath);
+    final image = imagePath.startsWith('http')
+        ? NetworkImage(imagePath)
+        : FileImage(File(imagePath.toString()));
+
     return ClipOval(
       child: Material(
           color: Colors.transparent,
           child: Ink.image(
-            image: image,
+            image: image as ImageProvider,
             fit: BoxFit.cover,
             width: 110,
             height: 110,

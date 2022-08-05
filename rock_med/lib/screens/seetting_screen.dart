@@ -1,11 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rock_med/themes/themes.dart';
 
 import '../widget/wiget.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({Key? key}) : super(key: key);
+  SettingScreen({Key? key}) : super(key: key);
   static const String routerName = 'SenttingScreen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +36,8 @@ class SettingScreen extends StatelessWidget {
                 title: const Text('Darkmode'),
                 onChanged: (value) {}),
             const Divider(),
+            ElevatedButton(
+                onPressed: () {}, child: const Text('Eliminar cuenta'))
           ],
         )),
       ),

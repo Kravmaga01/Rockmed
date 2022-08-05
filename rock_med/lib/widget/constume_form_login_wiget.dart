@@ -63,6 +63,7 @@ class _LoginFormState extends State<LoginForm> {
               height: 30,
             ),
             TextFormField(
+              obscureText: true,
               controller: passwordController,
               autocorrect: false,
               decoration: const InputDecoration(labelText: 'Contraseña'),
